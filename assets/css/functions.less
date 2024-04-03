@@ -1,0 +1,26 @@
+.placeholder(@color) {
+  ::-webkit-input-placeholder {
+    color: @color;
+    .transition(color, 0.3s, linear);
+  }
+  :-moz-placeholder {
+    color: @color;
+    .transition(color, 0.3s, linear);
+    opacity: 1;
+  }
+  ::-moz-placeholder {
+    color: @color;
+    .transition(color, 0.3s, linear);
+    opacity: 1;
+  }
+}
+
+.autofill(@bgcolor, @color) {
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px @bgcolor inset;
+    -webkit-text-fill-color: @color;
+  }
+}
