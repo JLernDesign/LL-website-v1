@@ -85,3 +85,7 @@ img {
   height: auto;
   display: block;
 }
+svg {
+  min-width: auto;
+  min-height: auto;
+}

@@ -1,6 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+const path = require('path');
+const dir = '/lindsey-lerner/preview/';
+
 export default defineNuxtConfig({
   app: {
+    baseURL: dir,
     head: {
       title: 'Lindsey Lerner PsyD',
       meta: [
@@ -11,6 +15,11 @@ export default defineNuxtConfig({
         },
       ],
       link: [
+        {
+          rel: 'icon',
+          type: 'image/png',
+          href: dir + 'favicon.png',
+        },
         {
           rel: 'preconnect',
           href: 'https://fonts.googleapis.com',
@@ -33,4 +42,9 @@ export default defineNuxtConfig({
     assets: '/<rootDir>/assets',
   },
   devtools: { enabled: true },
+  nitro: {
+    output: {
+      publicDir: path.join(__dirname, '/preview/'),
+    },
+  },
 });
