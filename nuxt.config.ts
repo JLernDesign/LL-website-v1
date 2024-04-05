@@ -42,9 +42,4 @@ export default defineNuxtConfig({
     assets: '/<rootDir>/assets',
   },
   devtools: { enabled: true },
-  nitro: {
-    output: {
-      publicDir: path.join(__dirname, '/preview/'),
-    },
-  },
 });
