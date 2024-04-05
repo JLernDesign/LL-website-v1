@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 const path = require('path');
-const dir = '/lindsey-lerner/preview/';
+const dir = '';
 
 export default defineNuxtConfig({
   app: {
@@ -32,7 +32,7 @@ export default defineNuxtConfig({
       ],
     },
   },
-  modules: ['@vueuse/nuxt', "@nuxt/image"],
+  modules: ['@vueuse/nuxt', '@nuxt/image'],
   css: [
     '~/assets/css/reset.css',
     '~/assets/css/setup.css',
