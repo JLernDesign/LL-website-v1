@@ -18,8 +18,4 @@ const areas = [
   </div>
 </template>
 
-<style scoped>
-.home-areas {
-  margin-top: 100px;
-}
-</style>
+<style scoped></style>

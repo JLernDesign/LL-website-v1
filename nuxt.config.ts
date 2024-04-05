@@ -26,13 +26,13 @@ export default defineNuxtConfig({
         },
         {
           rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700&display=swap',
+          href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap',
           crossorigin: '',
         },
       ],
     },
   },
-  modules: ['@vueuse/nuxt'],
+  modules: ['@vueuse/nuxt', "@nuxt/image"],
   css: [
     '~/assets/css/reset.css',
     '~/assets/css/setup.css',

@@ -1,6 +1,7 @@
 /* colors */
 :root {
   --pink: #ff7bac;
+  --dkpink: #fe5594;
   --yellow: #ffe569;
   --green: #7ad96a;
   --blue: #4cbbdf;
@@ -10,6 +11,7 @@
   --baseW: 1400px;
   --side-margin-fr: 35px;
   --side-margin: 50px;
+  --side-marginM: 25px;
 }
 ::-moz-selection {
   background: var(--pink);
@@ -56,6 +58,11 @@ h1 {
     line-height: 1.4;
   }
 }
+@media (max-width: 1024px) {
+  .content-wrapper p {
+    font-size: 18px;
+  }
+}
 
 /* layout */
 .wrapper {
@@ -69,6 +76,7 @@ h1 {
   background-color: white;
   border-radius: 50px;
   overflow: hidden;
+  position: relative;
 }
 .content-wrapper {
   margin: 0 auto;
@@ -110,6 +118,38 @@ section,
 .txt-grp {
   width: 100%;
 }
+@media (max-width: 1200px) {
+  section,
+  .global {
+    padding-left: var(--side-marginM);
+    padding-right: var(--side-marginM);
+  }
+  .row {
+    &.two-col {
+      grid-template-columns: auto;
+      .col {
+        max-width: none !important;
+        padding: 0;
+        place-content: start !important;
+        .txt-grp,
+        p {
+          max-width: none !important;
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+        &.lt {
+          padding-right: 5%;
+        }
+      }
+    }
+    &.has-line {
+      .col + .col {
+        border-left: none;
+        margin-top: 50px;
+      }
+    }
+  }
+}
 
 /* ui */
 .tags {
@@ -122,7 +162,7 @@ section,
     display: inline-block;
     margin-right: 15px;
     margin-bottom: 15px;
-    cursor: pointer;
+    /* cursor: pointer; */
   }
 }
 .circle-crop {
@@ -130,4 +170,22 @@ section,
   border-width: 5px;
   border-style: solid;
   overflow: hidden;
+}
+@media (max-width: 1200px) {
+  .tags li {
+    font-size: 18px;
+    padding: 10px;
+  }
+}
+
+/* buttons */
+a {
+  transition: all 0.3s linear;
+}
+a:not(.block) {
+  color: var(--pink);
+  text-decoration: underline;
+  &:hover {
+    opacity: 0.7;
+  }
 }

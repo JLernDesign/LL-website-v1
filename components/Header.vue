@@ -5,7 +5,7 @@ const pages = [
   { title: 'Services', icon: 'sit' },
   { title: 'Psilocybin', icon: 'hallucinate' },
 ];
-const showMenu = true;
+const showMenu = false;
 </script>
 
 <template>
@@ -24,10 +24,7 @@ const showMenu = true;
       </li>
     </nav>
   </header>
-
-  <div class="contact-btn">
-    <a href="mailto:Lindseynelsonpsyd@gmail.com">Get in Touch</a>
-  </div>
+  <Contact />
 </template>
 
 <style scoped>
@@ -74,10 +71,5 @@ nav {
   p {
     color: #fff;
   }
-}
-.contact-btn {
-  position: absolute;
-  right: 0;
-  top: 0;
 }
 </style>
