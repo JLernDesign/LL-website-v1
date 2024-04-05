@@ -1,4 +1,4 @@
-/* colors */
+/* vars */
 :root {
   --pink: #ff7bac;
   --dkpink: #fe5594;
@@ -152,7 +152,7 @@ section,
 }
 @media (max-width: 768px) {
   .wrapper {
-    padding: 15px;
+    padding: 15px 15px 35px;
   }
 }
 
