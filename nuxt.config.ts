@@ -11,7 +11,12 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content:
-            'Coming to therapy to take the first steps towards healing is one of the bravest things a person can do. ',
+            'Licensed Psychologist in Oregon specializing in Trauma/PTSD, Eating Disorders, Gender and Sexuality, Existential Issues, Addiction/Co-Dependency, Relationship Issues, Chronic Pain, Bipoc Issues',
+        },
+        {
+          name: 'keywords',
+          content:
+            'therapy, portland, oregon, psyd, psychologist, psychology, trauma, gender, sexuality, existential, eating disorder, ptsd, addiction, chronic pain, bipoc, queer, relationship, counseling',
         },
       ],
       link: [

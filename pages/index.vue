@@ -8,7 +8,7 @@
         <div class="col lt">
           <div class="txt-grp">
             <div class="logo">
-              <img src="@/assets/img/logo.svg" alt="" />
+              <img src="@/assets/img/logo.svg" alt="Lindsey Lerner PsyD" />
             </div>
           </div>
         </div>
@@ -18,7 +18,7 @@
               <div>
                 <img
                   src="@/assets/img/lindsey-home@2x.jpg"
-                  alt=""
+                  alt="Lindsey Lerner"
                   class="circle-crop bd-yellow"
                 />
               </div>
