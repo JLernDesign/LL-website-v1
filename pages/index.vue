@@ -1,47 +1,49 @@
 <script setup></script>
 
 <template>
-  <div class="pattern"></div>
-  <div class="home-wrapper">
-    <section class="home-hero content-wrapper vis">
-      <div class="row two-col has-line">
-        <div class="col lt">
-          <div class="txt-grp">
-            <div class="logo">
-              <img src="@/assets/img/logo.svg" alt="Lindsey Lerner PsyD" />
-            </div>
-          </div>
-        </div>
-        <div class="col rt a-rt">
-          <div class="txt-grp">
-            <div class="callout">
-              <div>
-                <img
-                  src="@/assets/img/lindsey-home@2x.jpg"
-                  alt="Lindsey Lerner"
-                  class="circle-crop bd-yellow"
-                />
+  <div>
+    <Pattern theme="dk" />
+    <div class="home-wrapper">
+      <section class="home-hero content-wrapper vis">
+        <div class="row two-col has-line">
+          <div class="col lt">
+            <div class="txt-grp">
+              <div class="logo">
+                <img src="@/assets/img/logo.svg" alt="Lindsey Lerner PsyD" />
               </div>
-              <h2>
-                Coming to therapy to take the first steps towards healing is one
-                of the bravest things a person can do.
-              </h2>
             </div>
+          </div>
+          <div class="col rt a-rt">
+            <div class="txt-grp">
+              <div class="callout">
+                <div>
+                  <img
+                    src="@/assets/img/lindsey-home@2x.jpg"
+                    alt="Lindsey Lerner"
+                    class="circle-crop bd-yellow"
+                  />
+                </div>
+                <h2>
+                  Coming to therapy to take the first steps towards healing is
+                  one of the bravest things a person can do.
+                </h2>
+              </div>
 
-            <p>
-              I believe that all beings naturally gravitate towards their most
-              actualized selves, and that the therapy room is a space to
-              validate and nurture that process. I view my role in this as an
-              honor and have a deep reverence and respect for individuals that I
-              serve.
-            </p>
+              <p>
+                I believe that all beings naturally gravitate towards their most
+                actualized selves, and that the therapy room is a space to
+                validate and nurture that process. I view my role in this as an
+                honor and have a deep reverence and respect for individuals that
+                I serve.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section class="content-wrapper areas">
-      <HomeAreas />
-    </section>
+      </section>
+      <section class="content-wrapper areas">
+        <HomeAreas />
+      </section>
+    </div>
   </div>
 </template>
 
@@ -89,14 +91,6 @@ h2 {
     max-width: 132px;
     margin-top: -7px;
   }
-}
-.pattern {
-  position: absolute;
-  left: 0;
-  top: 0px;
-  width: 100%;
-  height: 248px;
-  background-image: url(../public/icon-pattern.svg);
 }
 .areas {
   margin-top: 100px;

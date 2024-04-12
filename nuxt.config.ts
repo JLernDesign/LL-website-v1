@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 const path = require('path');
-const dir = '';
+const dir = '/';
 
 export default defineNuxtConfig({
   app: {
@@ -37,7 +37,8 @@ export default defineNuxtConfig({
       ],
     },
   },
-  modules: ['@vueuse/nuxt', '@nuxt/image', 'nuxt-gtag'],
+  modules: ['@vueuse/nuxt', '@nuxt/image'],
+  /* 'nuxt-gtag' */
   css: [
     '~/assets/css/reset.css',
     '~/assets/css/setup.css',
@@ -46,8 +47,8 @@ export default defineNuxtConfig({
   alias: {
     assets: '/<rootDir>/assets',
   },
-  devtools: { enabled: true },
-  gtag: {
+  devtools: { enabled: false },
+  /*   gtag: {
     id: 'G-751YVZCCDP',
-  },
+  }, */
 });

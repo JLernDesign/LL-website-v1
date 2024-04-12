@@ -1,20 +1,24 @@
 <script setup>
 const pages = [
-  { title: 'About', icon: 'look' },
-  { title: 'Expertise', icon: 'collect' },
-  { title: 'Services', icon: 'sit' },
-  { title: 'Psilocybin', icon: 'hallucinate' },
+  { title: 'About', icon: 'look', url: '/about' },
+  { title: 'Expertise', icon: 'collect', url: '/expertise' },
+  { title: 'Services', icon: 'sit', url: '/services' },
+  { title: 'Psilocybin', icon: 'hallucinate', url: '/psilocybin' },
 ];
-const showMenu = false;
+const showMenu = true;
 </script>
 
 <template>
+  <div class="logo-main">
+    <NuxtLink to="/"
+      ><p><strong>Lindsey</strong> Lerner</p></NuxtLink
+    >
+  </div>
   <header class="main" v-if="showMenu">
     <div class="gradbg"></div>
-
     <nav>
       <li v-for="page in pages">
-        <NuxtLink to="/">
+        <NuxtLink :to="page.url">
           <div class="icon-wrap">
             <img :src="`icons/${page.icon}.svg`" alt="" />
           </div>
@@ -38,6 +42,9 @@ header.main {
   overflow: hidden;
   z-index: 20;
   align-content: center;
+  a {
+    text-decoration: none;
+  }
 }
 .gradbg {
   position: absolute;
@@ -70,6 +77,23 @@ nav {
   }
   p {
     color: #fff;
+  }
+}
+.logo-main {
+  position: absolute;
+  left: 50px;
+  top: 30px;
+  font-size: 40px;
+  font-weight: 100;
+  text-transform: uppercase;
+  z-index: 11;
+  opacity: 0;
+  strong {
+    font-weight: 400;
+  }
+  a {
+    color: #fff;
+    text-decoration: none;
   }
 }
 </style>

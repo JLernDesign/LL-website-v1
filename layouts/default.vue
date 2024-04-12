@@ -1,5 +1,9 @@
+<script setup>
+const props = defineProps(['page']);
+</script>
+
 <template>
-  <div class="wrapper gradbg">
+  <div class="wrapper gradbg" :class="props.page">
     <Header />
     <div class="inner-wrapper">
       <slot />
@@ -7,3 +11,5 @@
     <Footer />
   </div>
 </template>
+
+<style scoped></style>
