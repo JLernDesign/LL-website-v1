@@ -1,8 +1,11 @@
 <script setup></script>
 
 <template>
-  <div style="min-height: 1500px">
-    <PageHeader title="Psilocybin" color="green" />
+  <div>
+    <PageHeader title="Psilocybin" color="green" size="wide" />
+    <div class="content-wrapper">
+      <p>Coming soon.</p>
+    </div>
   </div>
 </template>
 

@@ -41,6 +41,12 @@
 .bg-green {
   background-color: var(--green);
 }
+.bg-pink {
+  background-color: var(--pink);
+}
+.bg-blue {
+  background-color: var(--blue);
+}
 
 /* text */
 body {
@@ -64,6 +70,10 @@ h1 {
     line-height: 1.4;
   }
 }
+.body-sm p {
+  font-size: 18px;
+  line-height: 1.55;
+}
 @media (max-width: 1024px) {
   .content-wrapper p {
     font-size: 18px;
@@ -78,11 +88,14 @@ h1 {
   overflow: hidden;
   &.tier {
     padding-top: 100px;
-    .contact-btn {
+    /*     .contact-btn {
       top: 25px;
-    }
+    } */
     .logo-main {
       opacity: 1;
+    }
+    .inner-wrapper {
+      padding-bottom: 65px;
     }
   }
 }
@@ -98,7 +111,12 @@ h1 {
 }
 .content-wrapper {
   margin: 0 auto;
-  max-width: var(--baseW);
+  width: 100%;
+  max-width: calc(var(--baseW) + 100px);
+  padding: 0 var(--side-margin);
+}
+.row-wrapper {
+  position: relative;
 }
 section,
 .global {
@@ -136,11 +154,21 @@ section,
 .txt-grp {
   width: 100%;
 }
+.grid {
+  display: grid;
+  &.three-col {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+  }
+}
 @media (max-width: 1200px) {
   section,
   .global {
     padding-left: var(--side-marginM);
     padding-right: var(--side-marginM);
+  }
+  .content-wrapper {
+    padding: 0 var(--side-marginM);
   }
   .row {
     &.two-col {
@@ -163,7 +191,7 @@ section,
     &.has-line {
       .col + .col {
         border-left: none;
-        margin-top: 50px;
+        margin-top: 30px;
       }
     }
   }
@@ -196,7 +224,7 @@ section,
 }
 @media (max-width: 1200px) {
   .tags li {
-    font-size: 18px;
+    font-size: 22px;
     padding: 10px;
   }
 }
@@ -215,7 +243,19 @@ a:not(.block) {
 
 /* tier */
 header.tier {
-  height: 300px;
+  height: 200px;
   position: relative;
   overflow: hidden;
+}
+
+.cover {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+  background-color: white;
+  pointer-events: none;
+  will-change: transform;
 }

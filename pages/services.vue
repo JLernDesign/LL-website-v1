@@ -1,8 +1,11 @@
 <script setup></script>
 
 <template>
-  <div style="min-height: 1500px">
-    <PageHeader title="Services" color="yellow" />
+  <div>
+    <PageHeader title="Services" color="yellow" size="wide" />
+    <div class="content-wrapper">
+      <p>Coming soon.</p>
+    </div>
   </div>
 </template>
 

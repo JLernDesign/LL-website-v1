@@ -1,6 +1,6 @@
 export default defineNuxtRouteMiddleware((to, from) => {
-  console.log('from: ' + from.fullPath);
-  console.log('to: ' + to.fullPath);
+  //console.log('from: ' + from.fullPath);
+  //console.log('to: ' + to.fullPath);
 
   if (to.params.id === '1') {
     //return abortNavigation()

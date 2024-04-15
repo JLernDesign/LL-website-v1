@@ -1,4 +1,9 @@
-<script setup></script>
+<script setup>
+const route = useRoute();
+useHead({
+  title: 'Lindsey Lerner PsyD',
+});
+</script>
 
 <template>
   <div>
@@ -59,7 +64,9 @@
   min-height: calc(100vh - 70px);
 }
 .logo {
+  width: 100%;
   max-width: 600px;
+  margin: 0 auto;
 }
 h2 {
   font-weight: 300;
@@ -97,7 +104,7 @@ h2 {
 }
 @media (max-width: 1200px) {
   .home-wrapper {
-    padding-top: 100px;
+    padding-top: 120px;
     align-content: start;
   }
   .logo {
@@ -105,6 +112,13 @@ h2 {
   }
   .areas {
     margin-top: 25px;
+  }
+  .row.two-col .col.lt {
+    padding: 0;
+    display: block;
+  }
+  .callout + * {
+    margin-top: 15px;
   }
 }
 @media (max-width: 768px) {
@@ -124,6 +138,9 @@ h2 {
   }
 }
 @media (max-width: 550px) {
+  .home-wrapper {
+    padding-bottom: 25px;
+  }
   .callout {
     display: block;
     img {

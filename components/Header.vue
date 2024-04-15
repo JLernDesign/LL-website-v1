@@ -5,7 +5,7 @@ const pages = [
   { title: 'Services', icon: 'sit', url: '/services' },
   { title: 'Psilocybin', icon: 'hallucinate', url: '/psilocybin' },
 ];
-const showMenu = true;
+const showMenu = false;
 </script>
 
 <template>
@@ -17,15 +17,17 @@ const showMenu = true;
   <header class="main" v-if="showMenu">
     <div class="gradbg"></div>
     <nav>
-      <li v-for="page in pages">
-        <NuxtLink :to="page.url">
-          <div class="icon-wrap">
-            <img :src="`icons/${page.icon}.svg`" alt="" />
-          </div>
+      <ul>
+        <li v-for="page in pages">
+          <NuxtLink :to="page.url">
+            <div class="icon-wrap">
+              <img :src="`icons/${page.icon}.svg`" alt="" />
+            </div>
 
-          <p class="small-caps">{{ page.title }}</p>
-        </NuxtLink>
-      </li>
+            <p class="small-caps">{{ page.title }}</p>
+          </NuxtLink>
+        </li>
+      </ul>
     </nav>
   </header>
   <Contact />
@@ -55,7 +57,11 @@ header.main {
   min-height: 900px;
   z-index: 0;
 }
-nav {
+nav,
+ul {
+  width: 765px;
+}
+ul {
   position: relative;
   z-index: 1;
   display: grid;
@@ -69,7 +75,7 @@ nav {
     height: 100px;
     border-radius: 50%;
     border: 2px solid white;
-    margin-bottom: 15px;
+    margin: 0 auto 15px;
     padding: 18px;
     background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
     display: grid;
@@ -94,6 +100,23 @@ nav {
   a {
     color: #fff;
     text-decoration: none;
+  }
+}
+@media (max-width: 1500px) {
+  .logo-main {
+    font-size: 25px;
+  }
+  header.main {
+    transform: translateX(-50%) scale(0.7);
+    transform-origin: center top;
+  }
+  .wrapper.tier {
+    padding-top: 70px;
+  }
+}
+@media (max-width: 1200px) {
+  ul {
+    gap: auto;
   }
 }
 </style>

@@ -10,7 +10,7 @@ const setPageType = () => {
   } else {
     pageType.value = 'home';
   }
-  console.log(pageType.value);
+  //console.log(pageType.value);
   path.value = route.path;
 };
 setPageType();
@@ -30,7 +30,7 @@ onMounted(() => {
 
 // watch for new route
 watch(path, () => {
-  console.log('new route ready');
+  //console.log('new route ready');
   gsap.set('.inner-wrapper', { scrollTop: 0 });
 });
 </script>
@@ -62,20 +62,7 @@ watch(path, () => {
         }"
       />
     </NuxtLayout>
-    <div class="cover"></div>
   </div>
 </template>
 
-<style scoped>
-.cover {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 50;
-  background-color: white;
-  pointer-events: none;
-  will-change: transform;
-}
-</style>
+<style scoped></style>
