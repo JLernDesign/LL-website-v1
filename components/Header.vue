@@ -5,7 +5,8 @@ const pages = [
   { title: 'Services', icon: 'sit', url: '/services' },
   { title: 'Psilocybin', icon: 'hallucinate', url: '/psilocybin' },
 ];
-const showMenu = false;
+const props = defineProps(['class']);
+const showMenu = true;
 </script>
 
 <template>
@@ -30,12 +31,12 @@ const showMenu = false;
       </ul>
     </nav>
   </header>
-  <Contact />
+  <Contact :class="props.class" />
 </template>
 
 <style scoped>
 header.main {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -102,7 +103,7 @@ ul {
     text-decoration: none;
   }
 }
-@media (max-width: 1500px) {
+/* @media (max-width: 1500px) {
   .logo-main {
     font-size: 25px;
   }
@@ -118,5 +119,5 @@ ul {
   ul {
     gap: auto;
   }
-}
+} */
 </style>

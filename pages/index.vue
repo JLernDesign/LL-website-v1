@@ -9,7 +9,7 @@ useHead({
   <div>
     <Pattern theme="dk" />
     <div class="home-wrapper">
-      <section class="home-hero content-wrapper vis">
+      <section class="home-hero section-wrapper vis">
         <div class="row two-col has-line">
           <div class="col lt">
             <div class="txt-grp">
@@ -45,7 +45,7 @@ useHead({
           </div>
         </div>
       </section>
-      <section class="content-wrapper areas">
+      <section class="section-wrapper areas">
         <HomeAreas />
       </section>
     </div>

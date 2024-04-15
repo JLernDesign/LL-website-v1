@@ -4,8 +4,8 @@
   <div>
     <PageHeader title="Expertise" color="yellow" size="wide" />
     <div class="row-wrapper">
-      <TitleTab text="Specialties" color="pink" />
-      <div class="content-wrapper">
+      <TitleTab text="Specialties" color="pink" txt="lt" size="sm" />
+      <section class="section-wrapper pt">
         <div class="grid three-col">
           <AreaBucket
             v-for="area in areas"
@@ -13,11 +13,11 @@
             :desc="area.desc"
           />
         </div>
-      </div>
+      </section>
     </div>
     <div class="row-wrapper">
-      <TitleTab text="Modalities" color="blue" />
-      <div class="content-wrapper">
+      <TitleTab text="Modalities" color="blue" txt="lt" size="sm" />
+      <section class="section-wrapper vpad">
         <ul class="tags">
           <li v-for="mod in modalities">{{ mod }}</li>
         </ul>
@@ -27,7 +27,7 @@
             Insight Haven Group
           </p>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </template>
@@ -37,11 +37,12 @@ header {
   padding: 0 165px;
 }
 .row-wrapper {
-  display: grid;
-  grid-template-columns: 165px 1fr 165px;
-  align-items: start;
-  + .row-wrapper {
-    margin-top: 65px;
+  h2 {
+    margin-top: var(--top-margin);
+    max-width: 150px;
+    + * {
+      margin-top: 0;
+    }
   }
 }
 .tags li {

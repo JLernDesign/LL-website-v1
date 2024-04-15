@@ -2,16 +2,16 @@
 
 <template>
   <div class="contact-btn">
-    <!--     <a class="block" href="mailto:Lindseynelsonpsyd@gmail.com"
+    <a class="block" href="mailto:Lindseynelsonpsyd@gmail.com"
       ><span class="txt">Get in Touch</span>
       <img src="/public/icons/arrow-circle.svg" alt="" class="arr" />
-    </a> -->
-    <div class="contact-details">
+    </a>
+    <!--     <div class="contact-details">
       <a href="mailto:Lindseynelsonpsyd@gmail.com"
         >Lindseynelsonpsyd@gmail.com</a
       >
       <p>(971) 266-0647</p>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -21,9 +21,12 @@
   position: absolute;
   right: 0;
   top: 50px;
-  top: 0px;
+  /* top: 0px; */
   z-index: 12;
   transition: all 0.3s ease-out;
+  &.tier {
+    transform: translateY(-25px);
+  }
   > a {
     padding: 15px 25px;
     background-color: var(--pink);
@@ -51,7 +54,7 @@
   position: absolute;
   right: 0;
   top: 58px;
-  top: 0px;
+  /* top: 0px; */
   padding: 15px 25px;
   background-color: white;
   border: 1px solid var(--ltgray);
@@ -60,9 +63,8 @@
     margin-top: 10px;
   }
 }
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
   .contact-details > a {
-    /* display: none; */
     + p {
       margin-top: 0;
     }
@@ -76,8 +78,8 @@
   p {
     font-size: 15px;
   }
-}
-@media (max-width: 1200px) {
+} */
+/* @media (max-width: 1200px) {
   .contact-btn {
     left: 0;
     right: auto;
@@ -93,5 +95,5 @@
       margin-bottom: 5px;
     }
   }
-}
+} */
 </style>

@@ -25,6 +25,9 @@ footer {
     font-size: 16px;
     font-weight: 400;
     color: white;
+    + p {
+      margin-top: 0;
+    }
   }
   a {
     color: white;
