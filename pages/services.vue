@@ -20,7 +20,7 @@
       <div class="content-wrapper body-lg">
         <div class="row two-col">
           <div class="col lt p-rt">
-            <TitleTab text="Costs of Therapy" color="yellow" />
+            <TitleTab text="Costs of Therapy" color="yellow" txt="" size="" />
             <p>
               Intakes are $300 and individual therapy is $250 per session.
               Sliding scale options are available, with 1 pro-bono spot
@@ -31,7 +31,12 @@
             </p>
           </div>
           <div class="col rt">
-            <TitleTab text="Accepted Insurance carriers" color="yellow" />
+            <TitleTab
+              text="Accepted Insurance carriers"
+              color="yellow"
+              txt=""
+              size=""
+            />
             <ul class="item-list">
               <li v-for="item in insurance">{{ item }}</li>
             </ul>

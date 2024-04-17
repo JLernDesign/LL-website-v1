@@ -8,10 +8,8 @@ useHead({
 </script>
 
 <template>
-  <header
-    :class="`tier bg-${props.color} ${props.size == 'wide' ? 'hpad' : ''}`"
-  >
-    <Pattern theme="lt" />
+  <header :class="`tier bg-${props.color} ${props.size == 'wide' && 'hpad'}`">
+    <Pattern theme="lt" :fade="`${props.color == 'green' && 'true'}`" />
     <div class="page-grid" :class="props.size">
       <div></div>
       <h1>{{ props.title }}</h1>
@@ -38,7 +36,6 @@ h1 {
 }
 .pattern {
   height: 100%;
-  opacity: 0.7;
 }
 @media (max-width: 1200px) {
   h1 {

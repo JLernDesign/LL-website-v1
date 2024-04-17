@@ -17,6 +17,9 @@
   --side-margin: 50px;
   --side-marginM: 25px;
   --full-margin: 100px;
+  --ease-in-out: transform 0.5s cubic-bezier(1, 0, 0.5, 1);
+  --ease-in: transform 0.5s cubic-bezier(0.57, 0, 1, 0.48);
+  --ease-out: transform 0.5s cubic-bezier(0, 0.89, 0.32, 1);
 }
 
 .bd-yellow {
@@ -63,8 +66,8 @@ h1 {
   font-size: 50px;
 }
 h2 {
-  font-weight: 400;
   font-size: 26px;
+  font-weight: 400;
   line-height: 1.15;
 }
 h2 + * {
@@ -79,6 +82,15 @@ h4 {
 }
 p + p {
   margin-top: 25px;
+}
+[class*='body-'] {
+  p + ul,
+  ul + p {
+    margin-top: 25px;
+  }
+  ul:not(.item-list) {
+    padding-left: 30px;
+  }
 }
 .small-caps {
   font-size: 15px;

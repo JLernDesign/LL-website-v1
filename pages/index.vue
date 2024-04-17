@@ -9,7 +9,7 @@ useHead({
   <div>
     <Pattern theme="dk" />
     <div class="home-wrapper">
-      <section class="home-hero section-wrapper vis">
+      <section class="home-hero section-wrapper hpad vis">
         <div class="row two-col has-line">
           <div class="col lt">
             <div class="txt-grp">
@@ -19,7 +19,7 @@ useHead({
             </div>
           </div>
           <div class="col rt a-rt">
-            <div class="txt-grp">
+            <div class="txt-grp body-lg">
               <div class="callout">
                 <div>
                   <img
@@ -45,7 +45,7 @@ useHead({
           </div>
         </div>
       </section>
-      <section class="section-wrapper areas">
+      <section class="section-wrapper hpad areas">
         <HomeAreas />
       </section>
     </div>
@@ -71,6 +71,10 @@ useHead({
 h2 {
   font-weight: 300;
   font-size: 35px;
+}
+.body-lg p {
+  font-size: 25px;
+  line-height: 1.4;
 }
 .callout + * {
   margin-top: 30px;

@@ -87,6 +87,26 @@ export const psilocybin = [
     title: 'What does a psilocybin session look like?',
     desc: '<p>Sessions include the client ingesting a substance under the care of a therapist who has been trained specifically for this type of session and to help with any insights and/or hardships that arise.  This occurs in a safe and controlled environment.  A typical session can last from 6-8 hours, however, Dr. Lerner offers counseling prior to and after sessions for preparation and integration.</p>',
   },
+
+  {
+    title: 'Who can psilocybin help?',
+    desc: '<p>This type of therapy is especially beneficial to individuals that have not responded to more traditional therapies.  Some of the concerns and populations research has shown psilocybin to help are:</p><ul><li>Chronic Illness/End of life and death anxiety and depression</li><li>Depression and Anxiety</li><li>Post-traumatic Stress Disorder (PTSD)</li><li>Drug Addiction</li><li>And more!</li></ul>',
+  },
+
+  {
+    title: 'Benefits and Effectiveness',
+    desc: '<p>Research has indicated that psilocybin creates significant changes in brain dynamics and functional connectivity between areas of the brain- which is possibly why it is so effective after even a single use session.  The benefits may include lower rates of depression and chronic depression, lower anxiety, improved overall mood, less fear of the future, increased sensation of connection and spirituality, and improved overall quality of life.</p><p>No therapy is 100% effective all of the time, and some people will react differently to this form of treatment than others.  However, it is notable that up to 2/3 of individuals who try psilocybin as a treatment modality note marked positive results that are long lasting, including those who have experienced treatment resistant symptoms in the past.  Research is still being collected at this time to give a richer understanding about this form of treatment, but so far, research supports this as being a highly effective, safe form of treatment for many chronic conditions.</p>',
+  },
+
+  {
+    title: 'Special Considerations',
+    desc: '<p>Since psilocybin is psychoactive, it is important to feel well informed and fully ready before engagement in this type of therapy.  This powerful substance should always be used with the company of a trained therapist or guide who specializes in the therapeutic use of it.</p><p>There may be potential for addiction.  While research shows that this substance is not usually addictive, those with pre-existing addiction issues may be drawn to utilize this substance again outside of a therapeutic setting.  You should discuss this thoroughly with your practitioner prior to use.</p><p>Not every "trip" is a comfortable, enjoyable process and may bring up difficult emotions, memories, or experiences.  This is why I cannot stress enough the importance of having a trained guide to help you through difficult experiences.</p><p>Clients with underlying conditions should check with their physicians for guidance and clearance before engagement in treatment.</p>',
+  },
+
+  {
+    title: 'Cultural and Ethical Considerations',
+    desc: '<p>Dr. Lerner identifies as a queer, Jewish, white, able-bodied non-binary human who is dedicated to honoring the sacred medicine that is being offered as a treatment modality. It should be noted that the way that psilocybin therapy is being marketed and researched is entrenched in hyper-whiteness, with Western Institutions, white researchers and mental health "experts" putting their mark on this modality of treatment.  In almost all research, there is no mention of the original people  who used this form of medicine for healing and who have given this information and gift freely since as far back as we can examine in human history.  White people are often encouraged to name the people and land that we are benefiting from in order to profit from their knowledge and goods.  Dr. Lerner does not believe that this is enough and wants to find ways to empower and decolonize this process as much as possible.  As a white person, there are limits to doing so because there is inherent privilege in learning this information from other primarily white therapists and having to spend upwards of $10,000 for specialty training and continued education.  Not only is Dr. Lerner dedicated to honoring and entrenching her work with intention and reverence for the originators of this medicine, but also in creation of more equitable opportunities for training and reparations for the damage done.  Some of the ideas she has are to offer extremely low-cost/free sessions to anyone who identifies as BIPOC, and also creation of a scholarship fund for any BIPOC/marginalized individual who would like to work with a non-white practitioner but lacks the financial access to do so.  Additionally, Dr. Lerner would eventually like to develop a training program that offers extremely low cost/free training to non-white practitioners, hiring indigenous trainers to help disseminate the knowledge to help heal.  These ideas are still being developed and Dr. Lerner is open to feedback, criticism, support, and further ideas and is happy to engage in open dialogue about this, as she is always eager to learn and do better.</p>',
+  },
 ];
 
 export const side_psilocybin =

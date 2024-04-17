@@ -85,9 +85,6 @@
   > * + * {
     margin-top: 25px;
   }
-  ul {
-    padding-left: 30px;
-  }
 }
 .row {
   &.two-col {

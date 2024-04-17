@@ -1,9 +1,9 @@
 <script setup>
-const props = defineProps(['theme']);
+const props = defineProps(['theme', 'fade']);
 </script>
 
 <template>
-  <div class="pattern" :class="props.theme"></div>
+  <div :class="`pattern ${props.theme} ${props.fade && 'fade'}`"></div>
 </template>
 
 <style scoped>
@@ -18,6 +18,9 @@ const props = defineProps(['theme']);
   }
   &.lt {
     background-image: url(../public/icon-pattern-lt.svg);
+  }
+  &.fade {
+    opacity: 0.7;
   }
 }
 </style>
