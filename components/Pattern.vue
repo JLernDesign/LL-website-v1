@@ -3,7 +3,9 @@ const props = defineProps(['theme', 'fade']);
 </script>
 
 <template>
-  <div :class="`pattern ${props.theme} ${props.fade && 'fade'}`"></div>
+  <div
+    :class="`pattern ${props.theme} ${props.fade == 'true' ? 'fade' : ''}`"
+  ></div>
 </template>
 
 <style scoped>

@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.3.3",
     "@nuxt/image": "^1.5.0",
     "gsap": "npm:@gsap/shockingly@^3.12.5",
     "less": "^4.2.0",

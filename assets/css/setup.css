@@ -36,6 +36,12 @@
     #4cbbdf 98%
   );
 }
+.pink {
+  color: var(--pink);
+}
+.green {
+  color: var(--green);
+}
 .bg-yellow {
   background-color: var(--yellow);
 }
@@ -146,7 +152,8 @@ p + p {
 .p-max {
   max-width: calc(var(--baseW) + var(--full-margin));
 }
-.max-sm {
+.max-sm,
+.content-wrapper.max-sm {
   max-width: var(--baseWS);
 }
 

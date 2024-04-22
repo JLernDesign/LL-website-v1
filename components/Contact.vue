@@ -2,10 +2,10 @@
 
 <template>
   <div class="contact-btn">
-    <a class="block" href="mailto:Lindseynelsonpsyd@gmail.com"
+    <NuxtLink class="block" to="/contact"
       ><span class="txt">Get in Touch</span>
-      <img src="/public/icons/arrow-circle.svg" alt="" class="arr" />
-    </a>
+      <img src="../public/icons/arrow-circle.svg" alt="" class="btn-arr" />
+    </NuxtLink>
     <!--     <div class="contact-details">
       <a href="mailto:Lindseynelsonpsyd@gmail.com"
         >Lindseynelsonpsyd@gmail.com</a
@@ -43,11 +43,6 @@
   }
   .txt {
     align-self: center;
-  }
-  .arr {
-    width: 28px;
-    display: inline-block;
-    margin-left: 15px;
   }
 }
 .contact-details {
