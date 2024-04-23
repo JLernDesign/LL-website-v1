@@ -1,6 +1,5 @@
 <script setup>
-const props = defineProps(['title', 'color', 'icon']);
-import emailjs from '@emailjs/browser';
+const props = defineProps(['title', 'color', 'icon', 'id']);
 
 const formData = ref({
   firstname: '',
@@ -9,67 +8,98 @@ const formData = ref({
   msg: '',
 });
 
-const url =
-  'https://allure.instawp.xyz/wp-json/contact-form-7/v1/contact-forms/6/feedback';
-const hs =
-  'https://api.hsforms.com/submissions/v3/integration/submit/45946477/977c5136-feeb-426c-a1ef-786a6748f172';
-const myform = ref(null);
-const handleSubmit = (e) => {
-  console.log(
-    'submit form ' + formData.value.firstname + ' ' + formData.value.lastname
-  );
-  submitForm();
-  // submit to email with emailjs
-  /*   emailjs
-    .sendForm('service_jq9o9mi', 'template_5ygg4e2', myform.value, {
-      publicKey: 'aAS6i6QpWtcnZpRII',
-    })
-    .then(
-      () => {
-        console.log('form sent');
-        e.target.reset();
-      },
-      (error) => {
-        console.log(error);
-      }
-    ); */
-};
+const myfields = ref([]);
 
-const submitForm = async () => {
-  try {
-    const data = await $fetch(hs, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: {
-        fields: [
-          {
-            objectTypeId: '0-1',
-            name: 'firstname',
-            value: formData.value.firstname,
-          },
-          {
-            objectTypeId: '0-1',
-            name: 'lastname',
-            value: formData.value.lastname,
-          },
-          {
-            objectTypeId: '0-1',
-            name: 'email',
-            value: formData.value.email,
-          },
-          {
-            objectTypeId: '0-1',
-            name: 'message',
-            value: formData.value.msg,
-          },
-        ],
-      },
+// contact form 7
+
+const cf7 =
+  'https://allure.instawp.xyz/wp-json/contact-form-7/v1/contact-forms/' +
+  props.id +
+  '/feedback';
+
+const submitFormCF7 = async (e) => {
+  e.target.classList.add('sending');
+
+  // grab all form fields in FormData object
+  const formData = new FormData(e.target);
+  formData.append('_wpcf7_unit_tag', props.id);
+
+  const response = await $fetch(cf7, {
+    method: 'POST',
+    body: formData,
+  })
+    // handle error
+    .catch((e) => {
+      console.log(e);
     });
-    console.log(data.inlineMessage);
-  } catch (e) {
-    console.log(e);
+
+  // on success
+  if (response) {
+    console.log(response);
+    e.target.classList.remove('sending');
+    e.target.classList.add('sent');
+    e.target.reset();
+
+    // remove thank you if click on form
+    const fields = e.target.querySelectorAll('input, textarea');
+    fields.forEach((field) => {
+      field.addEventListener('click', removeSent);
+    });
   }
 };
+
+const submitForm = (e) => {
+  if (validate(e)) {
+    submitFormCF7(e);
+  }
+};
+
+const validate = (e) => {
+  let errs = 0;
+  const fields = e.target.querySelectorAll('[data-req="req"]');
+
+  // search for empty fields
+  fields.forEach((field) => {
+    if (field.value == '') {
+      field.classList.add('error');
+      errs++;
+
+      // add listener to remove error class
+      field.addEventListener('focus', removeErr);
+    }
+  });
+
+  // has errors
+  if (errs > 0) {
+    return false;
+  }
+
+  // submit form
+  return true;
+};
+
+const removeErr = (e) => {
+  e.target.classList.remove('error');
+  e.target.removeEventListener('focus', removeErr);
+};
+
+const removeSent = (e) => {
+  console.log('remove sent ' + e.target);
+  const forms = document.querySelectorAll('form');
+  forms.forEach((form) => {
+    form.classList.remove('sent');
+    form.removeEventListener('click', removeSent);
+  });
+};
+
+/* const cf7_get =
+  'https://allure.instawp.xyz/wp-json/contact-form-7/v1/contact-forms/6';
+const { data, pending, error, refresh } = await useFetch(cf7_get, {
+  onResponse({ request, response, options }) {
+    // Process the response data
+    console.log(response);
+  },
+}); */
 </script>
 
 <template>
@@ -79,26 +109,34 @@ const submitForm = async () => {
       <img :src="`/icons/${props.icon}.svg`" alt="" class="icon" />
     </div>
     <div class="row form">
-      <form ref="myform" @submit.prevent="handleSubmit">
+      <form
+        ref="myform"
+        id="myform"
+        class="trans-all"
+        @submit.prevent="submitForm"
+      >
         <div class="row two-col nopad">
           <input
             v-model="formData.firstname"
             type="text"
-            name="first_name"
+            name="firstname"
             placeholder="First Name"
+            data-req="req"
           />
           <input
             v-model="formData.lastname"
             type="text"
-            name="last_name"
+            name="lastname"
             placeholder="Last Name"
+            data-req="req"
           />
         </div>
         <input
           v-model="formData.email"
           type="email"
-          name="email"
+          name="youremail"
           placeholder="Email"
+          data-req="req"
         />
         <textarea
           v-model="formData.msg"
@@ -107,6 +145,9 @@ const submitForm = async () => {
         ></textarea>
 
         <div class="col a-rt">
+          <div class="thanks trans-all">
+            <p>Your message has been sent. Thank you!</p>
+          </div>
           <button type="submit">
             <span :class="`txt ${props.color}`">Submit</span>
             <span :class="`circ-arr bg-${props.color}`"
@@ -167,6 +208,43 @@ const submitForm = async () => {
       vertical-align: middle;
     }
   }
+  [data-req='req'] {
+    border: 1px solid #fff;
+    transition: border 0.3s linear;
+  }
+  .error {
+    border-color: var(--pink);
+  }
+
+  form {
+    &.sending {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    &.sent {
+      .thanks {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  .thanks {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    display: grid;
+    place-content: center;
+    padding-right: 150px;
+    opacity: 0;
+    visibility: hidden;
+    p {
+      font-weight: 400;
+      font-size: 0.9em;
+      line-height: 1.2;
+    }
+  }
 }
 
 .bucket.pink ::placeholder {
@@ -176,22 +254,11 @@ const submitForm = async () => {
   color: var(--green);
 }
 
-.bucket.pink {
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 1000px #fff inset;
-    -webkit-text-fill-color: var(--pink);
-  }
-}
-.bucket.green {
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 1000px #fff inset;
-    -webkit-text-fill-color: var(--green);
-  }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
+  -webkit-text-fill-color: var(--dkgray);
 }
 </style>

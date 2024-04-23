@@ -19,11 +19,13 @@
           title="Individual Psychotherapy"
           color="pink"
           icon="chair-pink"
+          id="6"
         />
         <ContactForm
           title="Psilocybin Facilitation"
           color="green"
           icon="stars-green"
+          id="54"
         />
       </div>
     </div>
