@@ -1,8 +1,14 @@
 <script setup>
+const page_id = 56;
 const route = useRoute();
 useHead({
   title: 'Lindsey Lerner PsyD',
 });
+
+// pull page from global site data
+const site_data = useState('site_data');
+const raw_data = toRaw(site_data.value);
+const page_data = raw_data.filter((item) => item.id == page_id)[0];
 </script>
 
 <template>
@@ -29,17 +35,12 @@ useHead({
                   />
                 </div>
                 <h2>
-                  Coming to therapy to take the first steps towards healing is
-                  one of the bravest things a person can do.
+                  {{ page_data.acf.home_headline }}
                 </h2>
               </div>
 
               <p>
-                I believe that all beings naturally gravitate towards their most
-                actualized selves, and that the therapy room is a space to
-                validate and nurture that process. I view my role in this as an
-                honor and have a deep reverence and respect for individuals that
-                I serve.
+                {{ page_data.acf.home_intro }}
               </p>
             </div>
           </div>

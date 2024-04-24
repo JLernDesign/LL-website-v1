@@ -1,5 +1,15 @@
 <script setup>
-const props = defineProps(['page']);
+const props = defineProps(['page', 'page_name']);
+/* const header = ref(null);
+onMounted(() => {
+  watch(
+    () => props.page_name,
+    () => {
+      console.log('change to: ' + props.page_name);
+      header.value.updateBG();
+    }
+  );
+}); */
 </script>
 
 <template>
@@ -40,5 +50,10 @@ const props = defineProps(['page']);
     text-align: center;
     font-size: 16px;
   }
+}
+.change {
+  position: fixed;
+  left: 0;
+  top: 0;
 }
 </style>

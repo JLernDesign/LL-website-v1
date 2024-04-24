@@ -5,8 +5,29 @@ const pages = [
   { title: 'Services', icon: 'sit', url: '/services' },
   { title: 'Psilocybin', icon: 'hallucinate', url: '/psilocybin' },
 ];
-const props = defineProps(['class']);
+const props = defineProps(['class', 'curpage']);
 const showMenu = true;
+
+let gradbg;
+onMounted(() => {
+  addEventListener('resize', updateBG);
+  gradbg = document.querySelector('.header-grad');
+  updateBG();
+});
+const updateBG = () => {
+  gradbg.style.height = document.body.scrollHeight + 'px';
+};
+defineExpose({ updateBG });
+
+// watch for page change to adjust header
+const title = useState('title');
+watch(
+  () => title.value,
+  () => {
+    console.log('change to: ' + title.value);
+    updateBG();
+  }
+);
 </script>
 
 <template>
@@ -16,7 +37,7 @@ const showMenu = true;
     >
   </div>
   <header class="main" v-if="showMenu">
-    <div class="gradbg"></div>
+    <div class="gradbg header-grad"></div>
     <nav>
       <ul>
         <li v-for="page in pages">
@@ -36,8 +57,8 @@ const showMenu = true;
 
 <style scoped>
 header.main {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 0px;
   left: 50%;
   transform: translateX(-50%);
   height: 180px;

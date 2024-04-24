@@ -8,8 +8,6 @@ const formData = ref({
   msg: '',
 });
 
-const myfields = ref([]);
-
 // contact form 7
 
 const cf7 =
@@ -83,23 +81,13 @@ const removeErr = (e) => {
   e.target.removeEventListener('focus', removeErr);
 };
 
-const removeSent = (e) => {
-  console.log('remove sent ' + e.target);
+const removeSent = () => {
   const forms = document.querySelectorAll('form');
   forms.forEach((form) => {
     form.classList.remove('sent');
     form.removeEventListener('click', removeSent);
   });
 };
-
-/* const cf7_get =
-  'https://allure.instawp.xyz/wp-json/contact-form-7/v1/contact-forms/6';
-const { data, pending, error, refresh } = await useFetch(cf7_get, {
-  onResponse({ request, response, options }) {
-    // Process the response data
-    console.log(response);
-  },
-}); */
 </script>
 
 <template>

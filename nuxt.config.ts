@@ -3,6 +3,7 @@ const path = require('path');
 const dir = '/';
 
 export default defineNuxtConfig({
+  ssr: false,
   app: {
     baseURL: dir,
     head: {
