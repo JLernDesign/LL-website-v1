@@ -10,7 +10,7 @@ const showMenu = true;
 
 let gradbg;
 onMounted(() => {
-  addEventListener('resize', updateBG);
+  //addEventListener('resize', updateBG);
   gradbg = document.querySelector('.header-grad');
   updateBG();
 });
@@ -28,6 +28,9 @@ watch(
     updateBG();
   }
 );
+
+// set resize listener
+useEventListener(window, 'resize', updateBG);
 </script>
 
 <template>

@@ -1,4 +1,7 @@
-<script setup></script>
+<script setup>
+// pull page from global site data by id
+const page_data = setupPageData(76);
+</script>
 
 <template>
   <div>

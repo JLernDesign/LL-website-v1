@@ -1,14 +1,11 @@
 <script setup>
-const page_id = 56;
 const route = useRoute();
 useHead({
   title: 'Lindsey Lerner PsyD',
 });
 
-// pull page from global site data
-const site_data = useState('site_data');
-const raw_data = toRaw(site_data.value);
-const page_data = raw_data.filter((item) => item.id == page_id)[0];
+// pull page from global site data by id
+const page_data = setupPageData(56);
 </script>
 
 <template>
@@ -35,12 +32,12 @@ const page_data = raw_data.filter((item) => item.id == page_id)[0];
                   />
                 </div>
                 <h2>
-                  {{ page_data.acf.home_headline }}
+                  {{ page_data && page_data.acf.home_headline }}
                 </h2>
               </div>
 
               <p>
-                {{ page_data.acf.home_intro }}
+                {{ page_data && page_data.acf.home_intro }}
               </p>
             </div>
           </div>

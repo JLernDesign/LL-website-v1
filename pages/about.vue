@@ -1,4 +1,7 @@
-<script setup></script>
+<script setup>
+// pull page from global site data by id
+const page_data = setupPageData(65);
+</script>
 
 <template>
   <div>
@@ -6,11 +9,14 @@
     <section class="section-wrapper vis">
       <div class="page-grid">
         <div class="about-photo">
-          <img src="@/assets/img/lindsey-about@2x.jpg" alt="" />
+          <img :src="page_data && page_data.acf.about_photo" alt="" />
         </div>
 
         <div class="content-wrapper pt pb">
-          <div class="max-sm body-md txt-cols" v-html="about"></div>
+          <div
+            class="max-sm body-md txt-cols"
+            v-html="page_data && page_data.acf.about_body"
+          ></div>
           <div class="quote-wrap">
             <blockquote>
               “Compassion is not a relationship between the healer and the
@@ -25,7 +31,10 @@
         <div class="sidebar">
           <div class="inner bg-paleyellow">
             <CircleIcon color="yellow" icon="look" />
-            <div class="side-body body-sm" v-html="creds"></div>
+            <div
+              class="side-body body-sm"
+              v-html="page_data && page_data.acf.about_background"
+            ></div>
           </div>
         </div>
       </div>

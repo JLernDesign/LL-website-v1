@@ -1,15 +1,5 @@
 <script setup>
-const props = defineProps(['page', 'page_name']);
-/* const header = ref(null);
-onMounted(() => {
-  watch(
-    () => props.page_name,
-    () => {
-      console.log('change to: ' + props.page_name);
-      header.value.updateBG();
-    }
-  );
-}); */
+const props = defineProps(['page']);
 </script>
 
 <template>

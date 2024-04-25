@@ -1,87 +1,41 @@
 <script setup>
 import gsap from 'gsap';
-const pageType = ref('home');
-const path = ref('/');
 const route = useRoute();
 
-/* const page_name = ref('');
-page_name.value = route.name; */
-
-// global state for page name
-const page_title = useState('title', () => route.name);
+const page_title = useState('page-title', () => 'index');
+const page_type = useState('page-type', () => 'home');
 
 // get data from API
 const site_data = useState('site_data', () => '');
-const get_url = 'https://allure.instawp.xyz/wp-json/wp/v2/pages';
+const get_url =
+  'https://allure.instawp.xyz/wp-json/wp/v2/pages?acf_format=standard ';
 const { data: alldata, pending } = await useFetch(get_url, {
+  onRequest() {
+    console.time();
+  },
   onResponse() {
-    console.log('request');
+    console.timeEnd();
+    console.log('data ready');
   },
 });
 site_data.value = toRaw(alldata.value);
 
-// figure out if home or tier page
-const setPageType = () => {
-  if (route.fullPath != '/') {
-    pageType.value = 'tier';
-  } else {
-    pageType.value = 'home';
-  }
-  //console.log(pageType.value);
-  path.value = route.path;
-};
-setPageType();
-
-// open page animation
-const openPage = () => {
-  setPageType();
-  gsap.fromTo(
-    '.cover',
-    { xPercent: 0 },
-    { duration: 0.5, xPercent: 100, ease: 'power3.inOut' }
-  );
-  unfreezePage();
-  //page_name.value = route.name;
-  page_title.value = route.name;
-};
-
-// freeze/unfreeze page on transition
-let wrapper;
+// open site after initial load
 onMounted(() => {
-  wrapper = document.querySelector('.wrapper');
+  openPage(route.fullPath, route.name);
 });
-
-const freezePage = () => {
-  const scrollY = window.scrollY;
-  wrapper.classList.add('change');
-  gsap.set('.wrapper', { top: -scrollY });
-};
-const unfreezePage = () => {
-  wrapper.classList.remove('change');
-  wrapper.style.top = '';
-};
-
-onMounted(() => {
-  openPage();
-});
-
-// watch for new route
-/* watch(path, () => {
-  //console.log('new route ready');
-  gsap.set('.inner-wrapper', { scrollTop: 0 });
-}); */
 </script>
 
 <template>
   <div>
-    <NuxtLayout :page="pageType">
+    <NuxtLayout :page="page_type">
       <NuxtPage
         :transition="{
           name: 'custom',
           mode: 'out-in',
           css: false,
           onBeforeLeave: () => {
-            freezePage();
+            freezePage('.wrapper');
           },
           onLeave: (el, done) => {
             gsap.fromTo(
@@ -96,7 +50,7 @@ onMounted(() => {
             );
           },
           onEnter: (el, done) => {
-            openPage();
+            openPage(route.fullPath, route.name);
           },
         }"
       />
