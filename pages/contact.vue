@@ -2,7 +2,7 @@
 
 <template>
   <section class="section-wrapper pb">
-    <div class="content-wrapper pt max-sm body-md">
+    <div class="content-wrapper pt hpad max-sm body-md">
       <header class="pt">
         <h1>Get in Touch</h1>
         <p>
@@ -42,6 +42,21 @@ h1 {
   color: var(--pink);
   + p {
     margin-top: 10px;
+  }
+}
+@media (max-width: 1200px) {
+  h1 {
+    font-size: 50px;
+  }
+  .bucket {
+    max-width: 750px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 1024px) {
+  header {
+    padding-top: 0;
   }
 }
 </style>

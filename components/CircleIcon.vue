@@ -16,4 +16,14 @@ const props = defineProps(['color', 'icon']);
   margin: 0 auto 30px;
   padding: 15px;
 }
+@media (max-width: 1024px) {
+  .circle-icon {
+    margin: 0 0 30px !important;
+  }
+}
+@media (max-width: 768px) {
+  .circle-icon {
+    display: none;
+  }
+}
 </style>

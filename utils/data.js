@@ -1,3 +1,12 @@
+export const home = [
+  {
+    headline:
+      'Coming to therapy to take the first steps towards healing is one of the bravest things a person can do.',
+    intro:
+      'I believe that all beings naturally gravitate towards their most actualized selves, and that the therapy room is a space to validate and nurture that process. I view my role in this as an honor and have a deep reverence and respect for individuals that I serve.',
+  },
+];
+
 export const about =
   '<p>Coming to therapy to take the first steps towards healing is one of the bravest things a person can do. I believe that all beings naturally gravitate towards their most actualized selves, and that the therapy room is a space to validate and nurture that process. I view my role in this as an honor and have a deep reverence and respect for individuals that I serve.</p><p>In the right environment, growth can happen authentically and naturally. I see my role as helping people feel safe, comfortable, and free to express themselves as they are. Clients appreciate my authenticity, sense of humor, and ability to stay in the moment with them as they tell their stories and explore the aspects of their lives that keep them stuck. In session, this is apparent as I utilize an insight and awareness oriented style of therapy.</p><p>I specialize in working with teens and adults across the age spectrum. Generally, people seek treatment in times of great transition and upheaval, which I see as fertile grounds for growth, self-awareness, and healing. I have worked extensively with a wide variety of concerns, and utilize a number of trauma modalities (Somatic Experiencing, EMDR, Entheogen Assisted Therapy-coming soon!).</p><p> Additionally, I have had many years of experience working with addiction and recovery and am happy to serve those seeking to get and stay sober or to work towards moderation of substance use. As a queer identified therapist, I have a special interest in working with LGBTQ+ clients, those with non-conforming gender identities, and individuals engaged in alternative relationship structures.</p>';
 

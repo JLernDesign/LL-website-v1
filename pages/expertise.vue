@@ -8,7 +8,7 @@ const page_data = setupPageData(76);
     <PageHeader title="Expertise" color="yellow" size="wide" />
     <div class="row-wrapper">
       <TitleTab text="Specialties" color="pink" txt="lt" size="sm" />
-      <section class="section-wrapper pt">
+      <section class="section-wrapper hpad">
         <div class="grid three-col">
           <AreaBucket
             v-for="area in areas"
@@ -20,7 +20,7 @@ const page_data = setupPageData(76);
     </div>
     <div class="row-wrapper">
       <TitleTab text="Modalities" color="blue" txt="lt" size="sm" />
-      <section class="section-wrapper vpad">
+      <section class="section-wrapper hpad">
         <ul class="tags">
           <li v-for="mod in modalities">{{ mod }}</li>
         </ul>
@@ -36,13 +36,9 @@ const page_data = setupPageData(76);
 </template>
 
 <style scoped>
-header {
-  padding: 0 165px;
-}
 .row-wrapper {
   h2 {
     margin-top: var(--top-margin);
-    max-width: 150px;
     + * {
       margin-top: 0;
     }
@@ -54,5 +50,18 @@ header {
 }
 .note {
   margin-top: 20px;
+}
+@media (min-width: 1401px) {
+  .row-wrapper .section-wrapper {
+    padding-top: var(--top-margin);
+  }
+  header {
+    padding: 0 165px;
+  }
+}
+@media (max-width: 1400px) {
+  .row-wrapper .section-wrapper {
+    padding-top: var(--top-marginM);
+  }
 }
 </style>

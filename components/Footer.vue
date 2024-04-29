@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <footer class="main">
+  <footer class="main hpad">
     <p>
       © Copyright 2024
       <!-- <span class="line-spacer">|</span> <NuxtLink to="privacy">Privacy Policy</NuxtLink> -->
@@ -17,7 +17,6 @@ footer {
   left: 0px;
   bottom: 0px;
   height: var(--side-margin-fr);
-  padding: 0 75px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,12 +36,20 @@ footer {
 .line-spacer {
   padding: 0 10px;
 }
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   footer {
-    padding: 0 50px;
-    p {
-      font-size: 13px;
+    justify-content: center;
+    > * {
+      display: inline-block;
+      + * {
+        margin-left: 10px;
+      }
     }
+  }
+}
+@media (max-width: 768px) {
+  footer p {
+    font-size: 13px;
   }
 }
 </style>

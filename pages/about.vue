@@ -1,6 +1,9 @@
 <script setup>
 // pull page from global site data by id
 const page_data = setupPageData(65);
+
+//v-html="page_data && page_data.acf.about_body"
+//v-html="page_data && page_data.acf.about_background"
 </script>
 
 <template>
@@ -9,14 +12,14 @@ const page_data = setupPageData(65);
     <section class="section-wrapper vis">
       <div class="page-grid">
         <div class="about-photo">
-          <img :src="page_data && page_data.acf.about_photo" alt="" />
+          <img src="@/assets/img/lindsey-about@2x.jpg" alt="" />
+          <!--           <img :src="page_data && page_data.acf.about_photo" alt="" />
+  
+ -->
         </div>
 
-        <div class="content-wrapper pt pb">
-          <div
-            class="max-sm body-md txt-cols"
-            v-html="page_data && page_data.acf.about_body"
-          ></div>
+        <div class="content-wrapper vpad pr mob">
+          <div class="max-sm body-md txt-cols" v-html="about"></div>
           <div class="quote-wrap">
             <blockquote>
               “Compassion is not a relationship between the healer and the
@@ -31,10 +34,7 @@ const page_data = setupPageData(65);
         <div class="sidebar">
           <div class="inner bg-paleyellow">
             <CircleIcon color="yellow" icon="look" />
-            <div
-              class="side-body body-sm"
-              v-html="page_data && page_data.acf.about_background"
-            ></div>
+            <div class="side-body body-sm" v-html="creds"></div>
           </div>
         </div>
       </div>
@@ -77,6 +77,19 @@ const page_data = setupPageData(65);
       box-shadow:
         10px 0 0 var(--paleyellow),
         -10px 0 0 var(--paleyellow);
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .about-photo {
+    display: none;
+  }
+  .quote-wrap {
+    margin-top: 25px;
+    blockquote,
+    cite {
+      font-size: 24px;
     }
   }
 }

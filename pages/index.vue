@@ -32,12 +32,16 @@ const page_data = setupPageData(56);
                   />
                 </div>
                 <h2>
-                  {{ page_data && page_data.acf.home_headline }}
+                  {{ home[0].headline }}
+                  <!--                   {{ page_data && page_data.acf.home_headline }}
+ -->
                 </h2>
               </div>
 
               <p>
-                {{ page_data && page_data.acf.home_intro }}
+                {{ home[0].intro }}
+                <!--                 {{ page_data && page_data.acf.home_intro }}
+ -->
               </p>
             </div>
           </div>

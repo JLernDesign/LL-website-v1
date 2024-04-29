@@ -77,4 +77,15 @@ const updateSize = () => {
     margin-top: 70px;
   }
 }
+
+@media (max-width: 768px) {
+  .q-wrap {
+    h2 {
+      margin-bottom: 15px;
+    }
+    + .q-wrap {
+      margin-top: 40px;
+    }
+  }
+}
 </style>

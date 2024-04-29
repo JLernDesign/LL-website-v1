@@ -10,26 +10,25 @@ const showMenu = true;
 
 let gradbg;
 onMounted(() => {
-  //addEventListener('resize', updateBG);
   gradbg = document.querySelector('.header-grad');
   updateBG();
 });
 const updateBG = () => {
   gradbg.style.height = document.body.scrollHeight + 'px';
 };
-defineExpose({ updateBG });
+//defineExpose({ updateBG });
 
 // watch for page change to adjust header
-const title = useState('title');
+const title = useState('page_title');
 watch(
   () => title.value,
   () => {
-    console.log('change to: ' + title.value);
+    //console.log('change to: ' + title.value);
     updateBG();
   }
 );
 
-// set resize listener
+// set resize listener to update bg gradient
 useEventListener(window, 'resize', updateBG);
 </script>
 
@@ -60,7 +59,7 @@ useEventListener(window, 'resize', updateBG);
 
 <style scoped>
 header.main {
-  position: fixed;
+  position: absolute;
   top: 0px;
   left: 50%;
   transform: translateX(-50%);
@@ -139,9 +138,15 @@ ul {
     padding-top: 70px;
   }
 }
-@media (max-width: 1200px) {
-  ul {
-    gap: auto;
+*/
+@media (max-width: 1024px) {
+  header.main nav {
+    display: none;
   }
-} */
+  .logo-main {
+    font-size: 30px;
+    top: 12px;
+    left: 35px;
+  }
+}
 </style>

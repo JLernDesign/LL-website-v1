@@ -1,5 +1,6 @@
 /* --------------------------- vars --------------------------- */
 :root {
+  /* colors */
   --pink: #ff7bac;
   --dkpink: #fe5594;
   --yellow: #ffe569;
@@ -10,13 +11,20 @@
   --gray: #ccc;
   --ltgray: #e5e5e5;
   --dkgray: #999;
+
+  /* bounds */
   --baseW: 1400px;
   --baseWS: 900px;
+
+  /* margins */
   --top-margin: 65px;
+  --top-marginM: 40px;
   --side-margin-fr: 35px;
   --side-margin: 50px;
   --side-marginM: 25px;
   --full-margin: 100px;
+
+  /* animation */
   --ease-in-out: transform 0.5s cubic-bezier(1, 0, 0.5, 1);
   --ease-in: transform 0.5s cubic-bezier(0.57, 0, 1, 0.48);
   --ease-out: transform 0.5s cubic-bezier(0, 0.89, 0.32, 1);
@@ -126,6 +134,36 @@ p + p {
   }
 }
 
+@media (max-width: 1200px) {
+  .body-lg {
+    p,
+    li {
+      font-size: 22px;
+    }
+  }
+  h2 + * {
+    margin-top: 30px;
+  }
+}
+@media (max-width: 1024px) {
+  body {
+    font-size: 18px;
+  }
+  .body-md {
+    p,
+    li {
+      font-size: 18px;
+      line-height: 1.5;
+    }
+  }
+  h2 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+}
+
 /* --------------------------- margins --------------------------- */
 
 .hpad,
@@ -146,8 +184,16 @@ p + p {
 .pl {
   padding-left: var(--side-margin);
 }
+.pl {
+  padding-left: var(--side-margin);
+}
 .pr {
   padding-right: var(--side-margin);
+}
+@media (min-width: 1201px) {
+  .pr.mob {
+    padding-right: 0;
+  }
 }
 .p-max {
   max-width: calc(var(--baseW) + var(--full-margin));
@@ -155,6 +201,29 @@ p + p {
 .max-sm,
 .content-wrapper.max-sm {
   max-width: var(--baseWS);
+}
+
+@media (max-width: 1200px) {
+  .vpad {
+    padding-top: var(--top-marginM);
+    padding-bottom: var(--top-marginM);
+  }
+  .hpad {
+    padding-left: var(--side-marginM);
+    padding-right: var(--side-marginM);
+  }
+  .pt {
+    padding-top: var(--top-marginM);
+  }
+  .pb {
+    padding-bottom: var(--top-marginM);
+  }
+  .pl {
+    padding-left: var(--side-marginM);
+  }
+  .pr {
+    padding-right: var(--side-marginM);
+  }
 }
 
 /* --------------------------- util --------------------------- */

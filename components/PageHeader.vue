@@ -42,4 +42,14 @@ h1 {
     font-size: 70px;
   }
 }
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 60px;
+  }
+}
+@media (max-width: 768px) {
+  h1 {
+    font-size: 50px;
+  }
+}
 </style>

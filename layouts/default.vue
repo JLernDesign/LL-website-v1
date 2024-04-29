@@ -5,8 +5,6 @@ const props = defineProps(['page']);
 <template>
   <div class="wrapper gradbg" :class="props.page">
     <Header :class="props.page" />
-    <!--     <div class="alert">Website Under Construction. Check Back Soon!</div>
- -->
     <div class="inner-wrapper">
       <slot />
     </div>

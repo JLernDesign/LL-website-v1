@@ -8,6 +8,6 @@ export default function (fullpath, name) {
     { duration: 0.5, xPercent: 100, ease: 'power3.inOut' }
   );
   unfreezePage('.wrapper');
-  const page_title = useState('page-title');
+  const page_title = useState('page_title');
   page_title.value = name;
 }

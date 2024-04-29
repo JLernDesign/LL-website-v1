@@ -58,37 +58,10 @@
     margin-top: 10px;
   }
 }
-/* @media (max-width: 1024px) {
-  .contact-details > a {
-    + p {
-      margin-top: 0;
-    }
-  }
+
+@media (max-width: 1024px) {
   .contact-btn {
-    top: 0;
+    display: none;
   }
-  .contact-btn > a {
-    font-size: 15px !important;
-  }
-  p {
-    font-size: 15px;
-  }
-} */
-/* @media (max-width: 1200px) {
-  .contact-btn {
-    left: 0;
-    right: auto;
-    top: 54px;
-    width: auto;
-  }
-  .contact-details {
-    position: relative;
-    right: auto;
-    left: 0px;
-    text-align: left;
-    a {
-      margin-bottom: 5px;
-    }
-  }
-} */
+}
 </style>

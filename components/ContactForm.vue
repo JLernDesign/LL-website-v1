@@ -150,7 +150,6 @@ const removeSent = () => {
 
 <style scoped>
 .bucket {
-  max-width: 672px;
   .icon {
     height: 100%;
     width: auto;
@@ -159,6 +158,13 @@ const removeSent = () => {
     height: 88px;
   }
 }
+
+@media (min-width: 1200px) {
+  .bucket {
+    max-width: 672px;
+  }
+}
+
 .form {
   background-color: #f5f5f5;
 
