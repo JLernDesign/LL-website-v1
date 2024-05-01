@@ -17,15 +17,13 @@
 
 <style scoped>
 .contact-btn {
-  width: 200px;
   position: absolute;
   right: 0;
   top: 50px;
-  /* top: 0px; */
   z-index: 12;
-  transition: all 0.3s ease-out;
+  transition: var(--ease-out);
   &.tier {
-    transform: translateY(-25px);
+    transform: translateY(-28px);
   }
   > a {
     padding: 15px 25px;
@@ -35,7 +33,7 @@
     font-weight: 700;
     text-transform: uppercase;
     display: grid;
-    grid-template-columns: 1fr 28px;
+    grid-template-columns: 1fr 35px;
     align-content: center;
     &:hover {
       background-color: var(--dkpink);
@@ -58,7 +56,21 @@
     margin-top: 10px;
   }
 }
-
+@media (max-width: 1300px) {
+  .contact-btn {
+    width: auto;
+    > a {
+      font-size: 16px;
+      padding: 10px 15px;
+    }
+    .btn-arr {
+      margin-left: 10px;
+    }
+    &.tier {
+      transform: translateY(-25px);
+    }
+  }
+}
 @media (max-width: 1024px) {
   .contact-btn {
     display: none;

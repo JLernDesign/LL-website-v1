@@ -1,3 +1,15 @@
+export const pages = [
+  { title: 'About', icon: 'look', url: '/about', desktop: true },
+  { title: 'Expertise', icon: 'collect', url: '/expertise', desktop: true },
+  { title: 'Services', icon: 'sit', url: '/services', desktop: true },
+  {
+    title: 'Psilocybin',
+    icon: 'hallucinate',
+    url: '/psilocybin',
+    desktop: true,
+  },
+  { title: 'Contact', icon: 'arrow', url: '/contact', desktop: false },
+];
 export const home = [
   {
     headline:

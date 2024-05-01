@@ -4,6 +4,17 @@ const page_data = setupPageData(65);
 
 //v-html="page_data && page_data.acf.about_body"
 //v-html="page_data && page_data.acf.about_background"
+
+const mobile = ref(false);
+const setMobile = () => {
+  if (window.innerWidth > 1024) {
+    mobile.value = false;
+  } else {
+    mobile.value = true;
+  }
+};
+setMobile();
+useEventListener(window, 'resize', setMobile);
 </script>
 
 <template>
@@ -19,6 +30,12 @@ const page_data = setupPageData(65);
         </div>
 
         <div class="content-wrapper vpad pr mob">
+          <img
+            src="@/assets/img/lindsey-about@2x.jpg"
+            alt=""
+            class="mobile-photo"
+            v-if="mobile"
+          />
           <div class="max-sm body-md txt-cols" v-html="about"></div>
           <div class="quote-wrap">
             <blockquote>
@@ -49,6 +66,14 @@ const page_data = setupPageData(65);
   img {
     border: 10px solid #fff;
   }
+}
+.mobile-photo {
+  float: left;
+  width: 50%;
+  max-width: 300px;
+  margin: 0 25px 10px 0;
+  border-right: 8px solid var(--yellow);
+  border-bottom: 8px solid var(--yellow);
 }
 .quote-wrap {
   margin-top: 50px;

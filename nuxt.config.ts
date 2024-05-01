@@ -38,8 +38,7 @@ export default defineNuxtConfig({
       ],
     },
   },
-  modules: ['@vueuse/nuxt', '@nuxt/image'],
-  /* 'nuxt-gtag' */
+  modules: ['@vueuse/nuxt', '@nuxt/image', 'nuxt-gtag'],
   css: [
     '~/assets/css/reset.css',
     '~/assets/css/setup.css',
@@ -49,7 +48,7 @@ export default defineNuxtConfig({
     assets: '/<rootDir>/assets',
   },
   devtools: { enabled: false },
-  /*   gtag: {
+  gtag: {
     id: 'G-751YVZCCDP',
-  }, */
+  },
 });

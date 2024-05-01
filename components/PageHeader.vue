@@ -22,12 +22,13 @@ useHead({
 header {
   display: grid;
   align-items: end;
-  /* padding: 0 var(--side-margin); */
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  transition: var(--ease-out);
 }
 h1 {
   width: 100%;
-  /*   max-width: 900px;
-  margin: 0 auto; */
   font-size: 100px;
   font-weight: 300;
   text-transform: uppercase;
@@ -37,17 +38,26 @@ h1 {
 .pattern {
   height: 100%;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
+  header {
+    height: 160px;
+  }
   h1 {
     font-size: 70px;
   }
 }
 @media (max-width: 1024px) {
+  header {
+    height: 125px;
+  }
   h1 {
     font-size: 60px;
   }
 }
 @media (max-width: 768px) {
+  header {
+    height: 100px;
+  }
   h1 {
     font-size: 50px;
   }

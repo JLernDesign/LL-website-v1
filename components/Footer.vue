@@ -4,9 +4,15 @@
   <footer class="main hpad">
     <p>
       © Copyright 2024
+      <span class="line-spacer">|</span>
+      <a href="mailto:Lindseynelsonpsyd@gmail.com"
+        >Lindseynelsonpsyd@gmail.com</a
+      >
+      <span class="line-spacer">|</span>(971) 266-0647
       <!-- <span class="line-spacer">|</span> <NuxtLink to="privacy">Privacy Policy</NuxtLink> -->
     </p>
-    <p>Design: <a href="http://jlern.com" target="_blank">JLern Design</a></p>
+    <!--     <p>Design: <a href="http://jlern.com" target="_blank">JLern Design</a></p>
+ -->
   </footer>
 </template>
 
@@ -42,7 +48,7 @@ footer {
     > * {
       display: inline-block;
       + * {
-        margin-left: 10px;
+        margin-left: 20px;
       }
     }
   }
@@ -50,6 +56,21 @@ footer {
 @media (max-width: 768px) {
   footer p {
     font-size: 13px;
+  }
+}
+@media (max-width: 650px) {
+  footer {
+    position: relative;
+    display: block;
+    height: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    .line-spacer {
+      display: block;
+      visibility: hidden;
+      height: 5px;
+      overflow: hidden;
+    }
   }
 }
 </style>

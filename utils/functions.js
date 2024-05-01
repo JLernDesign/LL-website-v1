@@ -53,3 +53,21 @@ export const pinMenu = (el) => {
     pinSpacing: false,
   });
 };
+
+// toggle class with scroll
+export const scrollUpToggle = (el, cl) => {
+  const elems = document.querySelectorAll(el);
+  elems.forEach((elem) => {
+    ScrollTrigger.create({
+      trigger: 'body',
+      start: 'top top+=-10',
+      end: 'bottom bottom',
+      onEnter: () => {
+        elem.classList.add(cl);
+      },
+      onLeaveBack: () => {
+        elem.classList.remove(cl);
+      },
+    });
+  });
+};

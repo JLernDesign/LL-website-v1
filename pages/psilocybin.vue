@@ -32,7 +32,7 @@ const updateSize = () => {
       <div class="page-grid">
         <SideMenu class="start-pin" />
 
-        <div class="content-wrapper pt pb">
+        <div class="content-wrapper vpad pr mob">
           <div class="max-sm body-md">
             <img
               src="@/assets/img/mushrooms@2x.jpg"
@@ -78,7 +78,7 @@ const updateSize = () => {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .q-wrap {
     h2 {
       margin-bottom: 15px;
@@ -86,6 +86,9 @@ const updateSize = () => {
     + .q-wrap {
       margin-top: 40px;
     }
+  }
+  .header-img {
+    margin-bottom: var(--top-marginM);
   }
 }
 </style>

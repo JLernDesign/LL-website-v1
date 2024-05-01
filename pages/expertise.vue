@@ -20,7 +20,7 @@ const page_data = setupPageData(76);
     </div>
     <div class="row-wrapper">
       <TitleTab text="Modalities" color="blue" txt="lt" size="sm" />
-      <section class="section-wrapper hpad">
+      <section class="section-wrapper hpad pb">
         <ul class="tags">
           <li v-for="mod in modalities">{{ mod }}</li>
         </ul>
@@ -62,6 +62,24 @@ const page_data = setupPageData(76);
 @media (max-width: 1400px) {
   .row-wrapper .section-wrapper {
     padding-top: var(--top-marginM);
+  }
+}
+@media (max-width: 1200px) {
+  .tags li {
+    font-size: 22px;
+  }
+}
+@media (max-width: 1024px) {
+  .row-wrapper {
+    h2 {
+      margin-top: var(--top-marginM);
+      + * {
+        margin-top: 0;
+      }
+    }
+    .section-wrapper {
+      padding-top: 25px;
+    }
   }
 }
 </style>

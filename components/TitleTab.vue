@@ -44,4 +44,15 @@ h2 {
     padding-right: 25px;
   }
 }
+@media (max-width: 1024px) {
+  h2 {
+    font-size: 18px;
+  }
+}
+@media (max-width: 768px) {
+  h2.sm {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
 </style>

@@ -1,10 +1,4 @@
 <script setup>
-const pages = [
-  { title: 'About', icon: 'look', url: '/about' },
-  { title: 'Expertise', icon: 'collect', url: '/expertise' },
-  { title: 'Services', icon: 'sit', url: '/services' },
-  { title: 'Psilocybin', icon: 'hallucinate', url: '/psilocybin' },
-];
 const props = defineProps(['class', 'curpage']);
 const showMenu = true;
 
@@ -16,14 +10,12 @@ onMounted(() => {
 const updateBG = () => {
   gradbg.style.height = document.body.scrollHeight + 'px';
 };
-//defineExpose({ updateBG });
 
 // watch for page change to adjust header
 const title = useState('page_title');
 watch(
   () => title.value,
   () => {
-    //console.log('change to: ' + title.value);
     updateBG();
   }
 );
@@ -40,21 +32,10 @@ useEventListener(window, 'resize', updateBG);
   </div>
   <header class="main" v-if="showMenu">
     <div class="gradbg header-grad"></div>
-    <nav>
-      <ul>
-        <li v-for="page in pages">
-          <NuxtLink :to="page.url">
-            <div class="icon-wrap">
-              <img :src="`icons/${page.icon}.svg`" alt="" />
-            </div>
-
-            <p class="small-caps">{{ page.title }}</p>
-          </NuxtLink>
-        </li>
-      </ul>
-    </nav>
+    <Nav type="desktop" />
   </header>
   <Contact :class="props.class" />
+  <Menu />
 </template>
 
 <style scoped>
@@ -68,9 +49,6 @@ header.main {
   overflow: hidden;
   z-index: 20;
   align-content: center;
-  a {
-    text-decoration: none;
-  }
 }
 .gradbg {
   position: absolute;
@@ -80,34 +58,6 @@ header.main {
   height: 100vh;
   min-height: 900px;
   z-index: 0;
-}
-nav,
-ul {
-  width: 765px;
-}
-ul {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-auto-columns: minmax(0, 1fr);
-  grid-auto-flow: column;
-  gap: 55px;
-  padding: 0 100px;
-  text-align: center;
-  .icon-wrap {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 2px solid white;
-    margin: 0 auto 15px;
-    padding: 18px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
-    display: grid;
-    place-content: center;
-  }
-  p {
-    color: #fff;
-  }
 }
 .logo-main {
   position: absolute;
@@ -126,19 +76,25 @@ ul {
     text-decoration: none;
   }
 }
-/* @media (max-width: 1500px) {
+@media (max-width: 1500px) {
   .logo-main {
-    font-size: 25px;
-  }
-  header.main {
-    transform: translateX(-50%) scale(0.7);
-    transform-origin: center top;
-  }
-  .wrapper.tier {
-    padding-top: 70px;
+    font-size: 35px;
+    line-height: 0.9;
+    top: 20px;
+    strong {
+      display: block;
+    }
   }
 }
-*/
+@media (max-width: 1300px) {
+  header.main {
+    height: 130px;
+    border-radius: 0 0 50px 50px;
+  }
+  .logo-main {
+    left: 35px;
+  }
+}
 @media (max-width: 1024px) {
   header.main nav {
     display: none;
@@ -146,7 +102,11 @@ ul {
   .logo-main {
     font-size: 30px;
     top: 12px;
-    left: 35px;
+  }
+}
+@media (max-width: 768px) {
+  .logo-main {
+    left: 25px;
   }
 }
 </style>

@@ -59,4 +59,9 @@ h1 {
     padding-top: 0;
   }
 }
+@media (max-width: 768px) {
+  h1 {
+    font-size: 40px;
+  }
+}
 </style>

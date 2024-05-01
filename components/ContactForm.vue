@@ -255,4 +255,47 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 1000px #fff inset;
   -webkit-text-fill-color: var(--dkgray);
 }
+
+@media (max-width: 1024px) {
+  .bucket {
+    .icon {
+      height: 80%;
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .bucket {
+    .icon {
+      display: none;
+    }
+    .row.form {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    h3 {
+      text-align: center;
+    }
+  }
+  .form {
+    input,
+    textarea {
+      font-size: 17px;
+    }
+    input {
+      padding: 0 10px;
+    }
+    textarea {
+      padding: 10px;
+    }
+    .thanks {
+      padding-right: 0;
+      position: relative;
+      width: 100%;
+      p {
+        font-size: 15px;
+      }
+    }
+  }
+}
 </style>

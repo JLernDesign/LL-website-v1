@@ -27,7 +27,8 @@
   /* animation */
   --ease-in-out: transform 0.5s cubic-bezier(1, 0, 0.5, 1);
   --ease-in: transform 0.5s cubic-bezier(0.57, 0, 1, 0.48);
-  --ease-out: transform 0.5s cubic-bezier(0, 0.89, 0.32, 1);
+  --ease-out: all 0.5s cubic-bezier(0, 0.89, 0.32, 1);
+  --linear: all 0.3s linear;
 }
 
 .bd-yellow {
@@ -156,6 +157,12 @@ p + p {
       line-height: 1.5;
     }
   }
+  .body-lg {
+    p,
+    li {
+      font-size: 20px;
+    }
+  }
   h2 {
     font-size: 22px;
   }
@@ -234,4 +241,7 @@ p + p {
 ::selection {
   background: var(--pink);
   color: #fff;
+}
+.anim-resize {
+  transition: var(--ease-out);
 }
