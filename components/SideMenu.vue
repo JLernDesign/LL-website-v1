@@ -43,6 +43,7 @@ li {
   position: relative;
   border-bottom: 1px solid var(--ltgray);
   cursor: pointer;
+  &:hover,
   &.on {
     span:before {
       transform: scaleX(1);

@@ -25,7 +25,7 @@ const navHoverOn = (e) => {
   const el = e.target.querySelector('.icon-wrap');
   gsap.to(el, {
     duration: 0.5,
-    y: -10,
+    y: -5,
     ease: 'power3.out',
   });
 };
@@ -62,6 +62,7 @@ const navHoverOff = (e) => {
 <style scoped>
 a {
   text-decoration: none;
+  display: block;
 }
 ul {
   width: 100%;
@@ -92,23 +93,48 @@ ul {
   }
 }
 
-li.active {
+nav.desktop {
   .active-circ {
-    transform: translateY(0px);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    margin-left: -10px;
+    top: -34px;
+    background-color: #fff;
+    transform: translateY(-20px);
+    transition: var(--ease-in-out);
   }
-}
-
-.active-circ {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  position: absolute;
-  left: 50%;
-  margin-left: -10px;
-  top: -34px;
-  background-color: #fff;
-  transform: translateY(-20px);
-  transition: var(--ease-in-out);
+  li.active {
+    .active-circ {
+      transform: translateY(0px);
+    }
+  }
+  .nav-link {
+    p {
+      display: inline-block;
+      position: relative;
+    }
+    p:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 100%;
+      height: 2px;
+      background-image: linear-gradient(currentColor, currentColor);
+      background-position: 0% 100%;
+      background-repeat: no-repeat;
+      background-size: 0% 2px;
+      transition: var(--ease-out);
+    }
+    &:hover {
+      p:after {
+        background-size: 100% 2px;
+      }
+    }
+  }
 }
 
 @media (max-width: 1300px) {
@@ -125,9 +151,9 @@ li.active {
         border-width: 1px;
       }
     }
-  }
-  .active-circ {
-    top: -28px;
+    .active-circ {
+      top: -28px;
+    }
   }
 }
 </style>

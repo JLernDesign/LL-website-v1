@@ -21,7 +21,7 @@ const page_data = setupPageData(76);
     <div class="row-wrapper">
       <TitleTab text="Modalities" color="blue" txt="lt" size="sm" />
       <section class="section-wrapper hpad pb">
-        <ul class="tags">
+        <ul class="tags nolink">
           <li v-for="mod in modalities">{{ mod }}</li>
         </ul>
         <div class="note body-sm">

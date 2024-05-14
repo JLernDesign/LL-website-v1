@@ -44,6 +44,9 @@ h1 {
     margin-top: 10px;
   }
 }
+.content-wrapper.max-sm {
+  max-width: 920px;
+}
 @media (max-width: 1200px) {
   h1 {
     font-size: 50px;

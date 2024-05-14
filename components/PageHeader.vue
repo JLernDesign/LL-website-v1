@@ -1,10 +1,29 @@
 <script setup>
 const props = defineProps(['title', 'color', 'size']);
+const page_title = useState('page_title');
+import gsap from 'gsap';
 
 const route = useRoute();
 useHead({
   title: 'Lindsey Lerner PsyD | ' + props.title,
 });
+
+// animate open
+onMounted(() => {
+  gsap.set('h1', { y: 50, opacity: 0 });
+});
+watch(
+  () => page_title.value,
+  () => {
+    gsap.to('h1', {
+      duration: 0.5,
+      delay: 0.25,
+      opacity: 1,
+      y: 0,
+      ease: 'power3.out',
+    });
+  }
+);
 </script>
 
 <template>
@@ -34,6 +53,7 @@ h1 {
   text-transform: uppercase;
   color: #fff;
   margin-bottom: -0.25em;
+  display: block;
 }
 .pattern {
   height: 100%;
@@ -60,6 +80,9 @@ h1 {
   }
   h1 {
     font-size: 50px;
+  }
+  .pattern {
+    background-size: 140px auto;
   }
 }
 </style>

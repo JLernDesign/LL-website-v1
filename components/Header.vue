@@ -71,10 +71,18 @@ header.main {
   visibility: hidden;
   strong {
     font-weight: 400;
+    display: inline-block;
+    transition: var(--ease-out);
   }
   a {
     color: #fff;
     text-decoration: none;
+    display: block;
+    &:hover {
+      > p strong {
+        transform: translateX(-5px);
+      }
+    }
   }
 }
 @media (max-width: 1500px) {

@@ -154,7 +154,7 @@ const removeSent = () => {
           </div>
           <button type="submit">
             <span :class="`txt ${props.color}`">Submit</span>
-            <span :class="`circ-arr bg-${props.color}`"
+            <span :class="`circ-arr anim-resize bg-${props.color}`"
               ><img src="/icons/arrow.svg" class="arr"
             /></span>
           </button>
@@ -216,6 +216,19 @@ const removeSent = () => {
     > * {
       display: inline-block;
       vertical-align: middle;
+    }
+    .txt {
+      transition: var(--linear);
+    }
+    &:hover {
+      > span {
+        color: #000;
+      }
+      > .circ-arr {
+        background-color: #000;
+        transform: rotate(-45deg);
+        transition-duration: 1s;
+      }
     }
   }
   [data-req='req'] {

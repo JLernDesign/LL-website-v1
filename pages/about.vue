@@ -50,7 +50,7 @@ useEventListener(window, 'resize', setMobile);
 
         <div class="sidebar">
           <div class="inner bg-paleyellow">
-            <CircleIcon color="yellow" icon="look" />
+            <CircleIcon color="yellow" icon="learn" />
             <div class="side-body body-sm" v-html="creds"></div>
           </div>
         </div>
@@ -116,6 +116,14 @@ useEventListener(window, 'resize', setMobile);
     cite {
       font-size: 24px;
     }
+  }
+}
+@media (max-width: 450px) {
+  .mobile-photo {
+    float: none;
+    width: 100%;
+    max-width: none;
+    margin-bottom: 20px;
   }
 }
 </style>

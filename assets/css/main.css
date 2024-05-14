@@ -274,18 +274,30 @@
 }
 .tags {
   list-style: none;
+  &.nolink {
+    li {
+      padding: 15px 20px;
+      border: 1px solid var(--ltgray);
+    }
+  }
   li {
     font-size: 32px;
-    padding: 15px 20px;
-    border: 1px solid var(--ltgray);
     display: inline-block;
     margin-right: 15px;
     margin-bottom: 15px;
     /* cursor: pointer; */
+    transition: var(--linear);
   }
   li a {
+    padding: 15px 20px;
+    display: inline-block;
     color: var(--dkgray);
     text-decoration: none;
+    border: 1px solid var(--ltgray);
+    &:hover {
+      border-color: var(--pink);
+      color: var(--pink);
+    }
   }
 }
 .circle-crop {
@@ -328,6 +340,11 @@
 @media (max-width: 1200px) {
   .tags li {
     font-size: 22px;
+    a {
+      padding: 10px;
+    }
+  }
+  .tags.nolink li {
     padding: 10px;
   }
 }
@@ -355,9 +372,9 @@ a {
 a:not(.block) {
   color: var(--pink);
   text-decoration: underline;
-  &:hover {
+  /*   &:hover {
     opacity: 0.7;
-  }
+  } */
 }
 .btn-arr {
   width: 28px;
