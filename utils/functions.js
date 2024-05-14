@@ -1,8 +1,10 @@
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SplitText } from 'gsap/SplitText';
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
+gsap.registerPlugin(SplitText);
 
 // auto scroll to section on click
 export const jumpTo = (e) => {
@@ -18,7 +20,7 @@ export const jumpTo = (e) => {
 
 // turn section on/off based on scroll position
 export const registerSection = (el) => {
-  const os = 50;
+  const os = 200;
   const elems = document.querySelectorAll(el);
   elems.forEach((elem) => {
     ScrollTrigger.create({
@@ -27,10 +29,11 @@ export const registerSection = (el) => {
       end: 'bottom top',
       onEnter: () => {
         elem.classList.add('on');
-        //console.log('on section ' + elem.dataset.id);
+        setActiveSection('.side-menu', elem.dataset.id);
       },
       onEnterBack: () => {
         elem.classList.add('on');
+        setActiveSection('.side-menu', elem.dataset.id);
       },
       onLeaveBack: () => {
         elem.classList.remove('on');
@@ -39,6 +42,18 @@ export const registerSection = (el) => {
         elem.classList.remove('on');
       },
     });
+  });
+};
+
+// update side menu with active section
+export const setActiveSection = (el, id) => {
+  const secs = document.querySelector(el).querySelectorAll('li');
+  secs.forEach((sec) => {
+    if (sec.dataset.id == id) {
+      sec.classList.add('on');
+    } else {
+      sec.classList.remove('on');
+    }
   });
 };
 
@@ -67,6 +82,43 @@ export const scrollUpToggle = (el, cl) => {
       },
       onLeaveBack: () => {
         elem.classList.remove(cl);
+      },
+    });
+  });
+};
+
+// split headline into characters
+export const splitHeadline = () => {
+  const hl = document.querySelectorAll('.hl-anim');
+  hl.forEach((el) => {
+    const spl = new SplitText(el, { type: 'chars', charsClass: 'letter' });
+    const letters = el.querySelectorAll('.letter');
+    gsap.set(letters, { opacity: 0, yPercent: 100 });
+  });
+};
+
+// animate each character on
+export const animSplitHeadline = (el) => {
+  const letters = el.querySelectorAll('.letter');
+  gsap.to(letters, {
+    duration: 0.5,
+    opacity: 1,
+    yPercent: 0,
+    ease: 'elastic.out(1,1.5)',
+    stagger: 0.1,
+  });
+};
+
+// scrolltrigger reveal
+export const scrollReveal = () => {
+  const elems = document.querySelectorAll('.scroll-reveal');
+  elems.forEach((elem) => {
+    ScrollTrigger.create({
+      id: 'revealed',
+      trigger: elem,
+      start: 'top 50%',
+      onEnter: () => {
+        elem.classList.add('on');
       },
     });
   });

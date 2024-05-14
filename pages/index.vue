@@ -162,6 +162,7 @@ h2 {
   }
   .logo {
     max-width: 300px;
+    padding: 0 15px;
   }
   .callout {
     grid-template-columns: 100px 1fr;

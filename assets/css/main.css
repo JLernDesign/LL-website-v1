@@ -218,6 +218,7 @@
       padding: 0;
     }
     &:not(.wide) {
+      grid-template-columns: 90% 1fr;
       .content-wrapper,
       h1 {
         padding-left: var(--side-marginM);

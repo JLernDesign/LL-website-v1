@@ -26,6 +26,8 @@ const navHoverOn = (e) => {
   gsap.to(el, {
     duration: 0.5,
     y: -5,
+    backgroundImage:
+      'linear-gradient(rgba(255,255,255, 0.2), rgba(255,255,255, 0))',
     ease: 'power3.out',
   });
 };
@@ -34,6 +36,7 @@ const navHoverOff = (e) => {
   gsap.to(el, {
     duration: 0.5,
     y: 0,
+    backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2))',
     ease: 'elastic.out(1.5,1)',
   });
 };
@@ -48,7 +51,7 @@ const navHoverOff = (e) => {
       >
         <span class="active-circ"></span>
         <NuxtLink :to="page.url" class="nav-link">
-          <div class="icon-wrap anim-resize1">
+          <div class="icon-wrap">
             <img :src="`icons/${page.icon}.svg`" alt="" />
           </div>
 
@@ -101,7 +104,7 @@ nav.desktop {
     position: absolute;
     left: 50%;
     margin-left: -10px;
-    top: -34px;
+    top: -30px;
     background-color: #fff;
     transform: translateY(-20px);
     transition: var(--ease-in-out);
@@ -124,7 +127,7 @@ nav.desktop {
       width: 100%;
       height: 2px;
       background-image: linear-gradient(currentColor, currentColor);
-      background-position: 0% 100%;
+      background-position: 50% 50%;
       background-repeat: no-repeat;
       background-size: 0% 2px;
       transition: var(--ease-out);
@@ -152,7 +155,7 @@ nav.desktop {
       }
     }
     .active-circ {
-      top: -28px;
+      top: -26px;
     }
   }
 }

@@ -21,8 +21,8 @@ const page_data = setupPageData(78);
     </section>
     <section class="section-wrapper bg-paleyellow hpad vpad">
       <div class="content-wrapper body-lg">
-        <div class="row two-col">
-          <div class="col lt p-rt">
+        <div class="row two-col boost">
+          <div class="col lt p-rt scroll-reveal">
             <TitleTab text="Costs of Therapy" color="yellow" txt="" size="" />
             <p>
               Intakes are $300 and individual therapy is $250 per session.
@@ -33,7 +33,7 @@ const page_data = setupPageData(78);
               for individuals with OHP insurance.
             </p>
           </div>
-          <div class="col rt">
+          <div class="col rt scroll-reveal">
             <TitleTab
               text="Accepted Insurance carriers"
               color="yellow"

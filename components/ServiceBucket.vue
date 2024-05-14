@@ -3,7 +3,7 @@ const props = defineProps(['title', 'desc', 'color', 'icon']);
 </script>
 
 <template>
-  <div class="bucket body-md">
+  <div class="bucket body-md scroll-reveal">
     <div class="row title" :class="`bg-${props.color}`">
       <h3 v-html="props.title"></h3>
     </div>

@@ -243,6 +243,43 @@ p + p {
   background: var(--pink);
   color: #fff;
 }
+.boost {
+  transform: translateZ(0px);
+}
 .anim-resize {
   transition: var(--ease-out);
+}
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.5s ease-out;
+  &.on {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .three-col .scroll-reveal {
+    &:nth-child(2n + 2) {
+      transition-delay: 0.2s;
+    }
+  }
+}
+@media (min-width: 1201px) {
+  .three-col .scroll-reveal {
+    &:nth-child(3n + 2) {
+      transition-delay: 0.15s;
+    }
+    &:nth-child(3n + 3) {
+      transition-delay: 0.3s;
+    }
+  }
+}
+@media (min-width: 769px) {
+  .two-col .scroll-reveal {
+    &:nth-child(2n + 2) {
+      transition-delay: 0.2s;
+    }
+  }
 }

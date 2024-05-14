@@ -3,7 +3,7 @@ const props = defineProps(['title', 'desc']);
 </script>
 
 <template>
-  <div class="bucket body-sm">
+  <div class="bucket body-sm scroll-reveal">
     <div class="row">
       <h3>{{ props.title }}</h3>
     </div>

@@ -17,6 +17,7 @@ watch(
   () => title.value,
   () => {
     updateBG();
+    scrollReveal('.scroll-reveal');
   }
 );
 

@@ -10,28 +10,38 @@ useHead({
 
 // animate open
 onMounted(() => {
-  gsap.set('h1', { y: 50, opacity: 0 });
+  //gsap.set('header.tier', { yPercent: -100 });
+  splitHeadline();
 });
+
+// once page is open, start animations
 watch(
   () => page_title.value,
   () => {
-    gsap.to('h1', {
-      duration: 0.5,
-      delay: 0.25,
-      opacity: 1,
-      y: 0,
-      ease: 'power3.out',
-    });
+    /*     setTimeout(() => {
+      gsap.to('header.tier', {
+        duration: 0.5,
+        yPercent: 0,
+        ease: 'power3.out',
+      });
+    }, 100); */
+
+    const hl = document.querySelector('.hl-anim');
+    setTimeout(() => {
+      animSplitHeadline(hl);
+    }, 200);
   }
 );
 </script>
 
 <template>
-  <header :class="`tier bg-${props.color} ${props.size == 'wide' && 'hpad'}`">
+  <header
+    :class="`tier off bg-${props.color} ${props.size == 'wide' && 'hpad'}`"
+  >
     <Pattern theme="lt" :fade="`${props.color == 'green' && 'true'}`" />
     <div class="page-grid" :class="props.size">
       <div></div>
-      <h1>{{ props.title }}</h1>
+      <h1 class="hl-anim">{{ props.title }}</h1>
       <div></div>
     </div>
   </header>
@@ -44,7 +54,10 @@ header {
   height: 200px;
   position: relative;
   overflow: hidden;
-  transition: var(--ease-out);
+  /* transition: var(--ease-out); */
+  /*   &.off {
+    transform: translateY(-100%);
+  } */
 }
 h1 {
   width: 100%;
