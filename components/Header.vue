@@ -68,6 +68,7 @@ header.main {
   text-transform: uppercase;
   z-index: 11;
   opacity: 0;
+  visibility: hidden;
   strong {
     font-weight: 400;
   }

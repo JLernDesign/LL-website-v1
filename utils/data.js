@@ -8,7 +8,7 @@ export const pages = [
     url: '/psilocybin',
     desktop: true,
   },
-  { title: 'Contact', icon: 'arrow', url: '/contact', desktop: false },
+  { title: 'Contact', icon: 'send', url: '/contact', desktop: false },
 ];
 export const home = [
   {

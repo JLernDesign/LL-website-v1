@@ -1,5 +1,6 @@
 <script setup>
 const props = defineProps(['title', 'color', 'icon', 'id']);
+import emailjs from '@emailjs/browser';
 
 const formData = ref({
   firstname: '',
@@ -7,6 +8,16 @@ const formData = ref({
   email: '',
   msg: '',
 });
+
+// emailJS
+
+const myform = ref(null);
+const submitFormEJS = () => {
+  // submit to email with emailjs
+  emailjs.sendForm('service_jq9o9mi', 'template_5ygg4e2', myform.value, {
+    publicKey: 'aAS6i6QpWtcnZpRII',
+  });
+};
 
 // contact form 7
 
@@ -33,7 +44,11 @@ const submitFormCF7 = async (e) => {
 
   // on success
   if (response) {
-    console.log(response);
+    // send email
+    submitFormEJS(e);
+
+    // reset form
+    //console.log(response);
     e.target.classList.remove('sending');
     e.target.classList.add('sent');
     e.target.reset();
@@ -131,6 +146,7 @@ const removeSent = () => {
           name="message"
           placeholder="Message"
         ></textarea>
+        <input type="hidden" name="inquiry" :value="props.title" />
 
         <div class="col a-rt">
           <div class="thanks trans-all">

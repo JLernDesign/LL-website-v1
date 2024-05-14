@@ -105,6 +105,10 @@ const closeMenu = () => {
   }
   &.open {
     .menu-btn {
+      background-color: #fff;
+      .menu-line {
+        background-color: #000;
+      }
       .menu-line:nth-child(1) {
         transform: rotate(45deg);
       }

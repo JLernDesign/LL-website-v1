@@ -55,10 +55,10 @@ const page_data = setupPageData(56);
 </template>
 
 <style scoped>
-.home-hero {
-  max-width: 1660px;
-}
 .home-wrapper {
+  width: 100%;
+  max-width: 1660px;
+  margin: 0 auto;
   padding-top: 280px;
   padding-bottom: 50px;
   display: grid;
@@ -108,6 +108,18 @@ h2 {
 .areas {
   margin-top: 100px;
 }
+
+@media (min-width: 1200px) and (max-width: 1450px) {
+  .row.two-col {
+    grid-template-columns: 1fr 1.5fr;
+  }
+}
+
+@media (max-width: 1400px) {
+  h2 {
+    font-size: 28px;
+  }
+}
 @media (max-width: 1200px) {
   .home-wrapper {
     padding-top: 120px;
@@ -123,13 +135,44 @@ h2 {
     padding: 0;
     display: block;
   }
+  .callout {
+    align-items: end;
+  }
   .callout + * {
     margin-top: 15px;
   }
+  .body-lg p {
+    font-size: 23px;
+    line-height: 1.4;
+  }
 }
+
+@media (max-width: 1024px) {
+  .home-wrapper {
+    padding-top: 50px;
+  }
+}
+
 @media (max-width: 768px) {
   h2 {
     font-size: 22px;
+  }
+  .body-lg p {
+    font-size: 18px;
+  }
+  .logo {
+    max-width: 300px;
+  }
+  .callout {
+    grid-template-columns: 100px 1fr;
+    img {
+      max-width: 80px;
+      margin-top: -7px;
+    }
+  }
+  .pattern {
+    top: -100px;
+    background-size: 140px auto;
   }
 }
 @media (min-width: 1200px) and (max-height: 980px) {
@@ -151,14 +194,11 @@ h2 {
     display: block;
     img {
       margin-bottom: 20px;
+      display: none;
     }
     + * {
       margin-top: 20px;
     }
-  }
-  .pattern {
-    top: -100px;
-    background-size: 40% auto;
   }
 }
 </style>

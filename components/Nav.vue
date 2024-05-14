@@ -1,19 +1,54 @@
 <script setup>
 const props = defineProps(['type']);
+const route = useRoute();
+import gsap from 'gsap';
 
 // filter links for desktop
 let pageList = pages;
 if (props.type == 'desktop') {
   pageList = pages.filter((page) => page.desktop);
 }
+
+// setup hovers for desktop
+onMounted(() => {
+  if (props.type == 'desktop') {
+    const nav = document.querySelector('ul.main-nav');
+    const links = nav.querySelectorAll('li');
+    links.forEach((link) => {
+      link.addEventListener('mouseenter', navHoverOn);
+      link.addEventListener('mouseleave', navHoverOff);
+    });
+  }
+});
+
+const navHoverOn = (e) => {
+  const el = e.target.querySelector('.icon-wrap');
+  gsap.to(el, {
+    duration: 0.5,
+    y: -10,
+    ease: 'power3.out',
+  });
+};
+const navHoverOff = (e) => {
+  const el = e.target.querySelector('.icon-wrap');
+  gsap.to(el, {
+    duration: 0.5,
+    y: 0,
+    ease: 'elastic.out(1.5,1)',
+  });
+};
 </script>
 
 <template>
   <nav :class="type">
-    <ul class="anim-resize">
-      <li v-for="page in pageList">
-        <NuxtLink :to="page.url">
-          <div class="icon-wrap anim-resize">
+    <ul class="main-nav anim-resize">
+      <li
+        v-for="page in pageList"
+        :class="page.url == route.fullPath && 'active'"
+      >
+        <span class="active-circ"></span>
+        <NuxtLink :to="page.url" class="nav-link">
+          <div class="icon-wrap anim-resize1">
             <img :src="`icons/${page.icon}.svg`" alt="" />
           </div>
 
@@ -49,9 +84,31 @@ ul {
     display: grid;
     place-content: center;
   }
+  li {
+    position: relative;
+  }
   p {
     color: #fff;
   }
+}
+
+li.active {
+  .active-circ {
+    transform: translateY(0px);
+  }
+}
+
+.active-circ {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  margin-left: -10px;
+  top: -34px;
+  background-color: #fff;
+  transform: translateY(-20px);
+  transition: var(--ease-in-out);
 }
 
 @media (max-width: 1300px) {
@@ -68,6 +125,9 @@ ul {
         border-width: 1px;
       }
     }
+  }
+  .active-circ {
+    top: -28px;
   }
 }
 </style>

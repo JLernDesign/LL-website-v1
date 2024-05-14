@@ -54,8 +54,10 @@ footer {
   }
 }
 @media (max-width: 768px) {
-  footer p {
-    font-size: 13px;
+  footer {
+    p {
+      font-size: 13px;
+    }
   }
 }
 @media (max-width: 650px) {
@@ -65,6 +67,7 @@ footer {
     height: auto;
     padding-top: 15px;
     padding-bottom: 15px;
+    text-align: center;
     .line-spacer {
       display: block;
       visibility: hidden;

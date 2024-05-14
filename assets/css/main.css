@@ -13,6 +13,7 @@
     }
     .logo-main {
       opacity: 1;
+      visibility: visible;
     }
   }
 }
@@ -274,7 +275,6 @@
 .tags {
   list-style: none;
   li {
-    color: var(--dkgray);
     font-size: 32px;
     padding: 15px 20px;
     border: 1px solid var(--ltgray);
@@ -282,6 +282,10 @@
     margin-right: 15px;
     margin-bottom: 15px;
     /* cursor: pointer; */
+  }
+  li a {
+    color: var(--dkgray);
+    text-decoration: none;
   }
 }
 .circle-crop {
@@ -316,6 +320,11 @@
   transition: all 0.3s linear;
 }
 
+@media (max-width: 1400px) {
+  .tags li {
+    font-size: 26px;
+  }
+}
 @media (max-width: 1200px) {
   .tags li {
     font-size: 22px;
@@ -331,6 +340,11 @@
       padding-top: 12px;
       padding-bottom: 12px;
     }
+  }
+}
+@media (max-width: 768px) {
+  .tags li {
+    font-size: 19px;
   }
 }
 
