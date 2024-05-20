@@ -51,4 +51,9 @@ export default defineNuxtConfig({
   gtag: {
     id: 'G-751YVZCCDP',
   },
+  runtimeConfig: {
+    public: {
+      datoCmsToken: process.env.DATO_CMS_TOKEN,
+    },
+  },
 });

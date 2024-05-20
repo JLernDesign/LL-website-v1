@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(['title', 'color', 'icon', 'id']);
+const props = defineProps(['title', 'color', 'icon', 'id', 'sendto']);
 import emailjs from '@emailjs/browser';
 
 const formData = ref({
@@ -12,11 +12,20 @@ const formData = ref({
 // emailJS
 
 const myform = ref(null);
-const submitFormEJS = () => {
+const submitFormEJS = (e) => {
   // submit to email with emailjs
-  emailjs.sendForm('service_jq9o9mi', 'template_5ygg4e2', myform.value, {
-    publicKey: 'aAS6i6QpWtcnZpRII',
-  });
+  emailjs
+    .sendForm('service_jq9o9mi', 'template_5ygg4e2', myform.value, {
+      publicKey: 'aAS6i6QpWtcnZpRII',
+    })
+    .then(
+      (response) => {
+        resetForm(e);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
 };
 
 // contact form 7
@@ -27,8 +36,6 @@ const cf7 =
   '/feedback';
 
 const submitFormCF7 = async (e) => {
-  e.target.classList.add('sending');
-
   // grab all form fields in FormData object
   const formData = new FormData(e.target);
   formData.append('_wpcf7_unit_tag', props.id);
@@ -45,25 +52,22 @@ const submitFormCF7 = async (e) => {
   // on success
   if (response) {
     // send email
-    submitFormEJS(e);
+    //submitFormEJS(e);
 
     // reset form
     //console.log(response);
-    e.target.classList.remove('sending');
-    e.target.classList.add('sent');
-    e.target.reset();
-
-    // remove thank you if click on form
-    const fields = e.target.querySelectorAll('input, textarea');
-    fields.forEach((field) => {
-      field.addEventListener('click', removeSent);
-    });
+    resetForm(e);
   }
 };
 
 const submitForm = (e) => {
   if (validate(e)) {
-    submitFormCF7(e);
+    e.target.classList.add('sending');
+    // email only
+    submitFormEJS(e);
+
+    // contact form 7
+    //submitFormCF7(e);
   }
 };
 
@@ -89,6 +93,18 @@ const validate = (e) => {
 
   // submit form
   return true;
+};
+
+const resetForm = (e) => {
+  e.target.classList.remove('sending');
+  e.target.classList.add('sent');
+  e.target.reset();
+
+  // remove thank you if click on form
+  const fields = e.target.querySelectorAll('input, textarea');
+  fields.forEach((field) => {
+    field.addEventListener('click', removeSent);
+  });
 };
 
 const removeErr = (e) => {
@@ -147,6 +163,7 @@ const removeSent = () => {
           placeholder="Message"
         ></textarea>
         <input type="hidden" name="inquiry" :value="props.title" />
+        <input type="hidden" name="sendto" :value="props.sendto" />
 
         <div class="col a-rt">
           <div class="thanks trans-all">

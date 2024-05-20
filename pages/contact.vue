@@ -19,12 +19,14 @@
           title="Individual Psychotherapy"
           color="pink"
           icon="chair-pink"
+          sendto="lindseynelsonpsyd@gmail.com"
           id="6"
         />
         <ContactForm
           title="Psilocybin Facilitation"
           color="green"
           icon="stars-green"
+          sendto="goodtripdeathdoula@gmail.com"
           id="54"
         />
       </div>

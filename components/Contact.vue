@@ -6,12 +6,6 @@
       ><span class="txt">Get in Touch</span>
       <img src="../public/icons/arrow-circle.svg" alt="" class="btn-arr" />
     </NuxtLink>
-    <!--     <div class="contact-details">
-      <a href="mailto:Lindseynelsonpsyd@gmail.com"
-        >Lindseynelsonpsyd@gmail.com</a
-      >
-      <p>(971) 266-0647</p>
-    </div> -->
   </div>
 </template>
 
