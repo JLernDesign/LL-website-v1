@@ -1,9 +1,4 @@
 <script setup>
-const route = useRoute();
-useHead({
-  title: 'Lindsey Lerner PsyD',
-});
-
 // pull page from global site data by id
 const page_data = setupPageData(56);
 </script>

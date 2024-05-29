@@ -1,6 +1,57 @@
 <script setup>
+queryPageMeta('About', 'about');
+
 // pull page from global site data by id
 const page_data = setupPageData(65);
+
+// SEO
+/* const QUERY = `
+  query {
+    homePage{
+    areas{
+      seo {
+        description
+        title
+      }
+    }
+  }
+  }
+`; */
+const globalSEOQuery = `
+query {
+  page{
+    about{
+    _seoMetaTags{
+      tag
+      attributes
+    }
+  }
+  }
+}
+`;
+/* const { data, error } = await useGraphqlQuery({ query: QUERY });
+const page_seo = toRaw(data.value.homePage.areas[0].seo);
+console.log(page_seo.title);
+console.log(page_seo.description); */
+
+/* const { data, error } = await useGraphqlQuery({ query: globalSEOQuery });
+const seo_data = toRaw(data.value.page.about._seoMetaTags);
+console.log(seo_data); */
+/* seo_data.forEach((obj) => {
+  // go through meta tags
+  if (obj.tag == 'meta') {
+    if (obj.attributes.property != undefined) {
+      console.log(
+        'property: ' + obj.attributes.property + ' - ' + obj.attributes.content
+      );
+    }
+    if (obj.attributes.name != undefined) {
+      console.log(
+        'name: ' + obj.attributes.name + ' - ' + obj.attributes.content
+      );
+    }
+  }
+}); */
 
 //v-html="page_data && page_data.acf.about_body"
 //v-html="page_data && page_data.acf.about_background"

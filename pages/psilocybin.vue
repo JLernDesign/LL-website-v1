@@ -2,7 +2,9 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
-import { onMounted, onUnmounted } from 'vue';
+
+// set meta data for page
+queryPageMeta('Psilocybin', 'psilocybin');
 
 onMounted(() => {
   // setup section register with scroll
@@ -14,6 +16,7 @@ onMounted(() => {
   // call resize listener
   addEventListener('resize', updateSize);
 });
+
 onUnmounted(() => {
   ScrollTrigger.killAll();
   addEventListener('resize', updateSize);

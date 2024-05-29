@@ -1,16 +1,11 @@
 <script setup>
 const props = defineProps(['title', 'color', 'size']);
 const page_title = useState('page_title');
-import gsap from 'gsap';
 
-const route = useRoute();
-useHead({
-  title: 'Lindsey Lerner PsyD | ' + props.title,
-});
+// setup meta data
 
-// animate open
 onMounted(() => {
-  //gsap.set('header.tier', { yPercent: -100 });
+  // animate open
   splitHeadline();
 });
 
@@ -18,14 +13,6 @@ onMounted(() => {
 watch(
   () => page_title.value,
   () => {
-    /*     setTimeout(() => {
-      gsap.to('header.tier', {
-        duration: 0.5,
-        yPercent: 0,
-        ease: 'power3.out',
-      });
-    }, 100); */
-
     const hl = document.querySelector('.hl-anim');
     setTimeout(() => {
       animSplitHeadline(hl);

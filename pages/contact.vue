@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+queryPageMeta('Contact', 'contact');
+</script>
 
 <template>
   <section class="section-wrapper pb">

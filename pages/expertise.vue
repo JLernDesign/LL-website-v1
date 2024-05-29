@@ -1,6 +1,5 @@
 <script setup>
-// pull page from global site data by id
-const page_data = setupPageData(76);
+queryPageMeta('Expertise', 'expertise');
 </script>
 
 <template>

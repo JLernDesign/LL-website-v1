@@ -17,6 +17,7 @@
     "normalize.css": "^8.0.1",
     "nuxt": "^3.11.1",
     "vue": "^3.4.21",
+    "vue-datocms": "^6.0.2",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
