@@ -1,33 +1,80 @@
 <script setup>
-queryPageMeta('Expertise', 'expertise');
+const page_ref = 'expertise';
+
+// Dato CMS Query
+const QUERY = /* GraphQL */ `
+  query {
+    ${page_ref} {
+      pageHeader {
+        title
+        slug
+      }
+    }
+    specialty {
+      title
+      specialtyAreas {
+        title
+        description
+      }
+    }
+    modality {
+      title
+      modalityAreas {
+        title
+      }
+      footnote
+    }
+  }
+`;
+const { data, error } = await useGraphqlQuery({ query: QUERY });
+const page_data = toRaw(data.value);
+
+// set page meta
+queryPageMeta(
+  page_data[page_ref].pageHeader.title,
+  page_data[page_ref].pageHeader.slug
+);
 </script>
 
 <template>
   <div>
-    <PageHeader title="Expertise" color="yellow" size="wide" />
+    <PageHeader
+      :title="page_data[page_ref].pageHeader.title"
+      color="yellow"
+      size="wide"
+    />
     <div class="row-wrapper">
-      <TitleTab text="Specialties" color="pink" txt="lt" size="sm" />
+      <TitleTab
+        :text="page_data.specialty.title"
+        color="pink"
+        txt="lt"
+        size="sm"
+      />
       <section class="section-wrapper hpad">
         <div class="grid three-col">
           <AreaBucket
-            v-for="area in areas"
+            v-for="area in page_data.specialty.specialtyAreas"
             :title="area.title"
-            :desc="area.desc"
+            :desc="area.description"
           />
         </div>
       </section>
     </div>
     <div class="row-wrapper">
-      <TitleTab text="Modalities" color="blue" txt="lt" size="sm" />
+      <TitleTab
+        :text="page_data.modality.title"
+        color="blue"
+        txt="lt"
+        size="sm"
+      />
       <section class="section-wrapper hpad pb">
         <ul class="tags nolink">
-          <li v-for="mod in modalities">{{ mod }}</li>
+          <li v-for="mod in page_data.modality.modalityAreas">
+            {{ mod.title }}
+          </li>
         </ul>
-        <div class="note body-sm">
-          <p>
-            * this service is not covered by insurance and not part of the
-            Insight Haven Group
-          </p>
+        <div class="note body-sm" v-if="page_data.modality.footnote">
+          <p>{{ page_data.modality.footnote }}</p>
         </div>
       </section>
     </div>

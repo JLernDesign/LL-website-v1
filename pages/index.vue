@@ -1,6 +1,26 @@
 <script setup>
+// reset to global page meta data
+initSiteMeta();
+const page_id = 'homePage';
+
 // pull page from global site data by id
-const page_data = setupPageData(56);
+const QUERY = /* GraphQL */ `
+  query {
+    ${page_id} {
+      logo {
+        url
+        alt
+      }
+      headline
+      photo {
+        url
+      }
+      intro
+    }
+  }
+`;
+const { data, error } = await useGraphqlQuery({ query: QUERY });
+const page_data = toRaw(data.value)[page_id];
 </script>
 
 <template>
@@ -12,7 +32,7 @@ const page_data = setupPageData(56);
           <div class="col lt">
             <div class="txt-grp">
               <div class="logo">
-                <img src="@/assets/img/logo.svg" alt="Lindsey Lerner PsyD" />
+                <img :src="page_data.logo.url" :alt="page_data.logo.alt" />
               </div>
             </div>
           </div>
@@ -21,22 +41,18 @@ const page_data = setupPageData(56);
               <div class="callout">
                 <div>
                   <img
-                    src="@/assets/img/lindsey-home@2x.jpg"
-                    alt="Lindsey Lerner"
+                    :src="page_data.photo.url"
+                    :alt="page_data.photo.alt"
                     class="circle-crop bd-yellow"
                   />
                 </div>
                 <h2>
-                  {{ home[0].headline }}
-                  <!--                   {{ page_data && page_data.acf.home_headline }}
- -->
+                  {{ page_data.headline }}
                 </h2>
               </div>
 
               <p>
-                {{ home[0].intro }}
-                <!--                 {{ page_data && page_data.acf.home_intro }}
- -->
+                {{ page_data.intro }}
               </p>
             </div>
           </div>

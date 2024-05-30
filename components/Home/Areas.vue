@@ -1,25 +1,22 @@
 <script setup>
-// Dato CMS
-/* const QUERY = `
+// Dato CMS Query
+const QUERY = /* GraphQL */ `
   query {
-    expertise {
-      areasOfExpertise {
-        title, description
-      } 
+    specialty {
+      specialtyAreas {
+        title
+      }
     }
   }
 `;
 const { data, error } = await useGraphqlQuery({ query: QUERY });
-const areas_data = toRaw(data.value.expertise.areasOfExpertise);
-areas_data.forEach((area) => {
-  console.log(area.title);
-}); */
+const page_data = toRaw(data.value);
 </script>
 
 <template>
   <div class="home-areas">
     <ul class="tags">
-      <li v-for="area in areas">
+      <li v-for="area in page_data.specialty.specialtyAreas">
         <NuxtLink to="/expertise">{{ area.title }}</NuxtLink>
       </li>
     </ul>

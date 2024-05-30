@@ -7,25 +7,7 @@ export default defineNuxtConfig({
   app: {
     baseURL: dir,
     head: {
-      title: 'Lindsey Lerner PsyD',
-      meta: [
-        {
-          name: 'description',
-          content:
-            'Licensed Psychologist in Oregon specializing in Trauma/PTSD, Eating Disorders, Gender and Sexuality, Existential Issues, Addiction/Co-Dependency, Relationship Issues, Chronic Pain, Bipoc Issues',
-        },
-        {
-          name: 'keywords',
-          content:
-            'therapy, portland, oregon, psyd, psychologist, psychology, trauma, gender, sexuality, existential, eating disorder, ptsd, addiction, chronic pain, bipoc, queer, relationship, counseling',
-        },
-      ],
       link: [
-        {
-          rel: 'icon',
-          type: 'image/png',
-          href: dir + 'favicon.png',
-        },
         {
           rel: 'preconnect',
           href: 'https://fonts.googleapis.com',

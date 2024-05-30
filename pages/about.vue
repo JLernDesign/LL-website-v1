@@ -1,60 +1,34 @@
 <script setup>
-queryPageMeta('About', 'about');
+const page_ref = 'about';
 
-// pull page from global site data by id
-const page_data = setupPageData(65);
-
-// SEO
-/* const QUERY = `
+// Dato CMS Query
+const QUERY = /* GraphQL */ `
   query {
-    homePage{
-    areas{
-      seo {
-        description
+    ${page_ref} {
+      pageHeader {
         title
+        slug
       }
+      photo {
+        url
+        alt
+      }
+      body
+      credentials
+      quoteText
+      byline
     }
   }
-  }
-`; */
-const globalSEOQuery = `
-query {
-  page{
-    about{
-    _seoMetaTags{
-      tag
-      attributes
-    }
-  }
-  }
-}
 `;
-/* const { data, error } = await useGraphqlQuery({ query: QUERY });
-const page_seo = toRaw(data.value.homePage.areas[0].seo);
-console.log(page_seo.title);
-console.log(page_seo.description); */
 
-/* const { data, error } = await useGraphqlQuery({ query: globalSEOQuery });
-const seo_data = toRaw(data.value.page.about._seoMetaTags);
-console.log(seo_data); */
-/* seo_data.forEach((obj) => {
-  // go through meta tags
-  if (obj.tag == 'meta') {
-    if (obj.attributes.property != undefined) {
-      console.log(
-        'property: ' + obj.attributes.property + ' - ' + obj.attributes.content
-      );
-    }
-    if (obj.attributes.name != undefined) {
-      console.log(
-        'name: ' + obj.attributes.name + ' - ' + obj.attributes.content
-      );
-    }
-  }
-}); */
+const { data, error } = await useGraphqlQuery({ query: QUERY });
+const page_data = toRaw(data.value);
 
-//v-html="page_data && page_data.acf.about_body"
-//v-html="page_data && page_data.acf.about_background"
+// set page meta
+queryPageMeta(
+  page_data[page_ref].pageHeader.title,
+  page_data[page_ref].pageHeader.slug
+);
 
 const mobile = ref(false);
 const setMobile = () => {
@@ -70,39 +44,46 @@ useEventListener(window, 'resize', setMobile);
 
 <template>
   <div>
-    <PageHeader title="About" color="yellow" />
+    <PageHeader :title="page_data[page_ref].pageHeader.title" color="yellow" />
     <section class="section-wrapper vis">
       <div class="page-grid">
         <div class="about-photo">
-          <img src="@/assets/img/lindsey-about@2x.jpg" alt="" />
-          <!--           <img :src="page_data && page_data.acf.about_photo" alt="" />
-  
- -->
+          <img
+            :src="page_data.about.photo.url"
+            :alt="page_data.about.photo.alt"
+          />
         </div>
 
         <div class="content-wrapper vpad pr mob">
           <img
-            src="@/assets/img/lindsey-about@2x.jpg"
-            alt=""
+            :src="page_data.about.photo.url"
+            :alt="page_data.about.photo.alt"
             class="mobile-photo"
             v-if="mobile"
           />
-          <div class="max-sm body-md txt-cols" v-html="about"></div>
-          <div class="quote-wrap">
-            <blockquote>
-              “Compassion is not a relationship between the healer and the
-              wounded. It's a relationship between equals. Only when we know our
-              own darkness well can we be present with the darkness of others.
-              Compassion becomes real when we recognize our shared humanity.”
-            </blockquote>
-            <cite><span>- Pema Chodron</span></cite>
+
+          <div
+            class="max-sm body-md txt-cols"
+            v-html="page_data.about.body"
+          ></div>
+
+          <div class="quote-wrap" v-if="page_data.about.quoteText">
+            <blockquote>“{{ page_data.about.quoteText }}”</blockquote>
+            <cite
+              ><span v-if="page_data.about.byline"
+                >- {{ page_data.about.byline }}</span
+              ></cite
+            >
           </div>
         </div>
 
         <div class="sidebar">
           <div class="inner bg-paleyellow">
             <CircleIcon color="yellow" icon="learn" />
-            <div class="side-body body-sm" v-html="creds"></div>
+            <div
+              class="side-body body-sm"
+              v-html="page_data.about.credentials"
+            ></div>
           </div>
         </div>
       </div>

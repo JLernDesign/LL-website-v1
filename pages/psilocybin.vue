@@ -1,10 +1,31 @@
 <script setup>
+const page_ref = 'psilocybin';
+
+// imports
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
-// set meta data for page
-queryPageMeta('Psilocybin', 'psilocybin');
+// Dato CMS Query
+const QUERY = /* GraphQL */ `
+  query {
+    ${page_ref} {
+      pageHeader {
+        title
+        slug
+      }
+      sideCallout
+    }
+  }
+`;
+const { data, error } = await useGraphqlQuery({ query: QUERY });
+const page_data = toRaw(data.value);
+
+// set page meta
+queryPageMeta(
+  page_data[page_ref].pageHeader.title,
+  page_data[page_ref].pageHeader.slug
+);
 
 onMounted(() => {
   // setup section register with scroll
@@ -30,7 +51,7 @@ const updateSize = () => {
 
 <template>
   <div>
-    <PageHeader title="Psilocybin" color="green" />
+    <PageHeader :title="page_data[page_ref].pageHeader.title" color="green" />
     <section class="section-wrapper">
       <div class="page-grid">
         <SideMenu class="start-pin" />
@@ -56,7 +77,10 @@ const updateSize = () => {
         <div class="sidebar">
           <div class="inner bg-palegreen">
             <CircleIcon color="green" icon="stars" />
-            <div class="side-body body-sm" v-html="side_psilocybin"></div>
+            <div
+              class="side-body body-sm"
+              v-html="page_data[page_ref].sideCallout"
+            ></div>
           </div>
         </div>
       </div>
