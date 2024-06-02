@@ -1,4 +1,5 @@
 <script setup>
+const props = defineProps(['items']);
 const setSection = (e) => {
   jumpTo(e);
 
@@ -20,12 +21,12 @@ const setSection = (e) => {
     <nav>
       <ul>
         <li
-          v-for="(item, key) in psilocybin"
+          v-for="(item, key) in items"
           @click="setSection"
           :data-id="key"
           :class="key == 0 && 'on'"
         >
-          <span>{{ item.title }}</span>
+          <span>{{ item.question }}</span>
         </li>
       </ul>
     </nav>

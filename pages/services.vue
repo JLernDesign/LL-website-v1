@@ -1,19 +1,60 @@
 <script setup>
-queryPageMeta('Services', 'services');
+const page_ref = 'servicesPage';
+
+// Dato CMS Query
+const QUERY = /* GraphQL */ `
+  query {
+    servicesPage {
+      pageHeader {
+        title
+        slug
+      }
+      services {
+        title
+        description
+        icon {
+          url
+        }
+        color {
+          hex
+        }
+      }
+      pricingTitle
+      pricingDesc
+      insuranceTitle
+      insuranceCarriers {
+        carrier
+      }
+    }
+  }
+`;
+const { data, error } = await useGraphqlQuery({ query: QUERY });
+const page_data = toRaw(data.value);
+console.log(page_data);
+
+// set page meta
+queryPageMeta(
+  page_data[page_ref].pageHeader.title,
+  page_data[page_ref].pageHeader.slug
+);
 </script>
 
 <template>
   <div>
-    <PageHeader title="Services" color="yellow" size="wide" />
+    <PageHeader
+      :title="page_data[page_ref].pageHeader.title"
+      color="yellow"
+      size="wide"
+    />
     <section class="section-wrapper hpad vpad">
       <div class="content-wrapper">
         <div class="grid three-col">
           <ServiceBucket
-            v-for="service in services"
+            v-for="service in page_data[page_ref].services"
             :title="service.title"
-            :desc="service.desc"
-            :color="service.color"
-            :icon="service.icon"
+            :desc="service.description"
+            :color="service.color.hex"
+            :icon="service.icon.url"
           />
         </div>
       </div>
@@ -22,25 +63,25 @@ queryPageMeta('Services', 'services');
       <div class="content-wrapper body-lg">
         <div class="row two-col boost">
           <div class="col lt p-rt scroll-reveal">
-            <TitleTab text="Costs of Therapy" color="yellow" txt="" size="" />
-            <p>
-              Intakes are $300 and individual therapy is $250 per session.
-              Sliding scale options are available, with 1 pro-bono spot
-              available to those unable to pay. I am in-network with several
-              insurance companies, and can provide a super bill as an out of
-              network provider. I am also able to apply for pre-authorization
-              for individuals with OHP insurance.
-            </p>
+            <TitleTab
+              :text="page_data[page_ref].pricingTitle"
+              color="yellow"
+              txt=""
+              size=""
+            />
+            <div v-html="page_data[page_ref].pricingDesc"></div>
           </div>
           <div class="col rt scroll-reveal">
             <TitleTab
-              text="Accepted Insurance carriers"
+              :text="page_data[page_ref].insuranceTitle"
               color="yellow"
               txt=""
               size=""
             />
             <ul class="item-list">
-              <li v-for="item in insurance">{{ item }}</li>
+              <li v-for="item in page_data[page_ref].insuranceCarriers">
+                {{ item.carrier }}
+              </li>
             </ul>
           </div>
         </div>

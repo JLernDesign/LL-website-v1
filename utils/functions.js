@@ -116,7 +116,7 @@ export const scrollReveal = () => {
     ScrollTrigger.create({
       id: 'revealed',
       trigger: elem,
-      start: 'top 50%',
+      start: 'top 65%',
       onEnter: () => {
         elem.classList.add('on');
       },

@@ -14,6 +14,14 @@ const QUERY = /* GraphQL */ `
         title
         slug
       }
+      photo {
+        url
+        alt
+      }
+      qas {
+        question
+        answer
+      }
       sideCallout
     }
   }
@@ -54,22 +62,22 @@ const updateSize = () => {
     <PageHeader :title="page_data[page_ref].pageHeader.title" color="green" />
     <section class="section-wrapper">
       <div class="page-grid">
-        <SideMenu class="start-pin" />
+        <SideMenu class="start-pin" :items="page_data[page_ref].qas" />
 
         <div class="content-wrapper vpad pr mob">
           <div class="max-sm body-md">
             <img
-              src="@/assets/img/mushrooms@2x.jpg"
+              :src="page_data[page_ref].photo.url"
               class="header-img"
-              alt=""
+              :alt="page_data[page_ref].photo.alt"
             />
             <div
               class="q-wrap"
-              v-for="(item, key) in psilocybin"
+              v-for="(item, key) in page_data[page_ref].qas"
               :data-id="key"
             >
-              <h2>{{ item.title }}</h2>
-              <span v-html="item.desc"></span>
+              <h2>{{ item.question }}</h2>
+              <span v-html="item.answer"></span>
             </div>
           </div>
         </div>
