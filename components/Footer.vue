@@ -9,10 +9,7 @@
         >Lindseynelsonpsyd@gmail.com</a
       >
       <span class="line-spacer">|</span>(971) 266-0647
-      <!-- <span class="line-spacer">|</span> <NuxtLink to="privacy">Privacy Policy</NuxtLink> -->
     </p>
-    <!--     <p>Design: <a href="http://jlern.com" target="_blank">JLern Design</a></p>
- -->
   </footer>
 </template>
 
