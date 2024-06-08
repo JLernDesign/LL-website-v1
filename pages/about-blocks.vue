@@ -1,5 +1,7 @@
 <script setup>
 const page_ref = 'about';
+import { Image as DatocmsImage } from 'vue-datocms';
+import { StructuredText as DatocmsStructuredText } from 'vue-datocms';
 
 // Dato CMS Query
 const QUERY = /* GraphQL */ `
@@ -20,7 +22,18 @@ const QUERY = /* GraphQL */ `
         }
         ... on HeroRecord {
           photo {
-            url
+            responsiveImage {
+              srcSet
+              webpSrcSet
+              sizes
+              src
+              width
+              height
+              aspectRatio
+              alt
+              title
+              base64
+            }
           }
         }
       }
@@ -35,6 +48,7 @@ const QUERY = /* GraphQL */ `
 
 const { data, error } = await useGraphqlQuery({ query: QUERY });
 const page_data = toRaw(data.value).page;
+console.log(page_data);
 
 // set page meta
 /* queryPageMeta(
@@ -62,7 +76,8 @@ let quote_byline;
 page_data.sections.forEach((section, i) => {
   // Hero
   if (section.__typename == 'HeroRecord') {
-    hero_photo = section.photo;
+    hero_photo = section.photo.responsiveImage;
+    console.log(hero_photo);
   }
 
   // Body
@@ -84,17 +99,25 @@ page_data.sections.forEach((section, i) => {
     <section class="section-wrapper vis">
       <div class="page-grid">
         <div class="about-photo">
-          <img :src="hero_photo.url" :alt="hero_photo.alt" />
+          <DatocmsImage :data="hero_photo" />
+          <!--           <img :src="hero_photo.url" :alt="hero_photo.alt" />
+ -->
         </div>
 
         <div class="content-wrapper vpad pr mob">
+          <!-- loop through content blocks -->
           <template v-for="section in page_data.sections">
-            <img
+            <DatocmsImage
+              :data="hero_photo"
+              class="mobile-photo"
+              v-if="mobile && section.__typename == 'HeroRecord'"
+            />
+            <!-- <img
               :src="section.photo.url"
               :alt="section.photo.alt"
               class="mobile-photo"
               v-if="mobile && section.__typename == 'HeroRecord'"
-            />
+            /> -->
 
             <div
               class="max-sm body-md txt-cols"
@@ -112,6 +135,9 @@ page_data.sections.forEach((section, i) => {
               >
             </div>
           </template>
+
+          <!--           <DatocmsStructuredText :data="page_data.structuredText" />
+ -->
         </div>
 
         <div class="sidebar">
@@ -129,7 +155,8 @@ page_data.sections.forEach((section, i) => {
 .about-photo {
   margin-top: -70px;
   padding-right: 9%;
-  img {
+  img,
+  > div {
     border: 10px solid #fff;
   }
 }

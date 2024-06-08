@@ -30,7 +30,6 @@ const QUERY = /* GraphQL */ `
 `;
 const { data, error } = await useGraphqlQuery({ query: QUERY });
 const page_data = toRaw(data.value);
-console.log(page_data);
 
 // set page meta
 queryPageMeta(

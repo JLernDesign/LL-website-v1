@@ -58,14 +58,17 @@ export const setActiveSection = (el, id) => {
 };
 
 // pin side menu while scrolling
-export const pinMenu = (el) => {
-  ScrollTrigger.create({
-    trigger: '.start-pin',
-    endTrigger: '.end-pin',
-    start: 'top top',
-    end: 'bottom bottom',
-    pin: el,
-    pinSpacing: false,
+export const pinMenu = (el, minW) => {
+  let mm = gsap.matchMedia();
+  mm.add('(min-width: ' + minW + 'px)', () => {
+    ScrollTrigger.create({
+      trigger: '.start-pin',
+      endTrigger: '.end-pin',
+      start: 'top top',
+      end: 'bottom bottom',
+      pin: el,
+      pinSpacing: false,
+    });
   });
 };
 

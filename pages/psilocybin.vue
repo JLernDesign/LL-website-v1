@@ -1,5 +1,6 @@
 <script setup>
 const page_ref = 'psilocybin';
+import { Image as DatocmsImage } from 'vue-datocms';
 
 // imports
 import gsap from 'gsap';
@@ -17,6 +18,13 @@ const QUERY = /* GraphQL */ `
       photo {
         url
         alt
+        responsiveImage(imgixParams: { auto: format }) {
+          src
+          width
+          height
+          alt
+          bgColor
+        }
       }
       qas {
         question
@@ -40,7 +48,7 @@ onMounted(() => {
   registerSection('.q-wrap');
 
   // setup menu pin
-  pinMenu('.side-menu');
+  pinMenu('.side-menu', 1024);
 
   // call resize listener
   addEventListener('resize', updateSize);
@@ -66,11 +74,15 @@ const updateSize = () => {
 
         <div class="content-wrapper vpad pr mob">
           <div class="max-sm body-md">
-            <img
+            <DatocmsImage
+              :data="page_data[page_ref].photo.responsiveImage"
+              class="header-img"
+            />
+            <!--             <img
               :src="page_data[page_ref].photo.url"
               class="header-img"
               :alt="page_data[page_ref].photo.alt"
-            />
+            /> -->
             <div
               class="q-wrap"
               v-for="(item, key) in page_data[page_ref].qas"
