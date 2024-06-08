@@ -37,6 +37,7 @@ export default async function () {
     'site_desc',
     () => data.value.site.globalSeo.fallbackSeo.description
   );
+  console.log(data.value.homePage.seo);
 
   // compile meta tags for head
   useHead(() => {
