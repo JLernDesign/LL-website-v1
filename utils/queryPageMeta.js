@@ -10,7 +10,7 @@ export default async function (title, slug) {
     }
   `;
   const { data, error } = await useGraphqlQuery({ query: QUERY });
-  const seo_data = toRaw(data.value.page.seo);
+  const seo_data = toRaw(data.value.page.seoMeta);
 
   return setupPageMeta(title, seo_data);
 }
